@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NoviMed — Votre santé, à portée de main</title>
+<meta name="description" content="NoviMed vous connecte aux pharmacies du Togo : médicaments disponibles, pharmacies de garde, réservations et ordonnances. Première phase : Lomé. Bientôt sur Google Play.">
+<link rel="icon" type="image/png" href="novimed-logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bleu:#0068C3;
+    --bleu-fonce:#00509B;
+    --nuit:#0A2A45;
+    --vert:#38B650;
+    --vert-vif:#57C666;
+    --vert-fonce:#2B9440;
+    --menthe:#EFFAF1;
+    --ciel:#EFF6FD;
+    --encre:#132433;
+    --gris:#5A6B7D;
+    --ligne:#E2ECF2;
+    --blanc:#FFFFFF;
+    --degrade:linear-gradient(93deg,var(--bleu) 0%,var(--vert) 100%);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Public Sans',system-ui,sans-serif;
+    color:var(--encre);
+    background:var(--blanc);
+    line-height:1.6;
+  }
+  h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.15}
+  a{color:inherit}
+  .mono{font-family:'IBM Plex Mono',monospace}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.94);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--ligne);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .logo-nav{display:block;height:34px}
+  .logo-nav img{height:100%;width:auto;display:block}
+  .nav-liens{display:flex;gap:22px;align-items:center;font-size:.92rem;font-weight:600}
+  .nav-liens a{text-decoration:none;color:var(--gris)}
+  .nav-liens a:hover{color:var(--encre)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:12px 22px;border-radius:12px;
+    font-weight:700;font-size:.95rem;text-decoration:none;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn:focus-visible{outline:3px solid var(--vert);outline-offset:2px}
+  .btn-bleu{background:var(--bleu);color:#fff;box-shadow:0 6px 18px rgba(0,104,195,.25)}
+  .btn-bleu:hover{background:var(--bleu-fonce);transform:translateY(-1px)}
+  .btn-contour{border:2px solid var(--bleu);color:var(--bleu)}
+  .btn-contour:hover{background:var(--ciel)}
+  .btn-vert{background:var(--vert);color:#fff;box-shadow:0 6px 18px rgba(56,182,80,.3)}
+  .btn-vert:hover{background:var(--vert-fonce);transform:translateY(-1px)}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:
+      radial-gradient(700px 340px at 85% 0%, rgba(87,198,102,.14), transparent 65%),
+      radial-gradient(700px 340px at 0% 100%, rgba(0,104,195,.10), transparent 60%),
+      var(--blanc);
+    padding:70px 0 84px;
+  }
+  .hero-grille{display:grid;grid-template-columns:1.15fr .85fr;gap:52px;align-items:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--vert-fonce);
+    background:var(--menthe);border:1px solid #CFEFD6;border-radius:99px;
+    padding:6px 14px;margin-bottom:20px;
+  }
+  .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--vert);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .hero h1{font-size:clamp(2.1rem,4.6vw,3.25rem);font-weight:800;margin-bottom:20px}
+  .hero h1 .grad{
+    background:var(--degrade);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.sous{font-size:1.12rem;color:var(--gris);max-width:33rem;margin-bottom:30px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .badge-play{
+    display:inline-flex;align-items:center;gap:12px;
+    background:var(--nuit);color:#fff;border-radius:12px;padding:10px 20px;
+    font-weight:700;font-size:.98rem;
+  }
+  .badge-play .tri{width:0;height:0;border-style:solid;border-width:9px 0 9px 15px;border-color:transparent transparent transparent var(--vert-vif)}
+  .badge-play small{display:block;font-weight:600;font-size:.68rem;opacity:.75;letter-spacing:.06em}
+  .note-testeurs{margin-top:16px;font-size:.85rem;color:var(--gris)}
+
+  /* Croix de garde — signature */
+  .croix-scene{display:flex;flex-direction:column;align-items:center}
+  .croix-cadre{
+    background:var(--nuit);border-radius:24px;padding:34px;
+    box-shadow:0 24px 60px rgba(10,42,69,.35);
+  }
+  .croix{
+    display:grid;grid-template-columns:repeat(7,1fr);gap:6px;
+    width:min(240px,58vw);aspect-ratio:1;
+  }
+  .croix i{border-radius:4px;background:rgba(255,255,255,.05)}
+  .croix i.on{background:var(--vert-vif);box-shadow:0 0 12px rgba(87,198,102,.8);animation:garde 2.6s ease-in-out infinite}
+  .croix i.on:nth-child(odd){animation-delay:.6s}
+  .croix i.on:nth-child(3n){animation-delay:1.2s}
+  @keyframes garde{0%,100%{opacity:1}50%{opacity:.4}}
+  .croix-legende{margin-top:16px;font-size:.85rem;color:var(--vert-fonce);font-weight:600;text-align:center}
+  @media (prefers-reduced-motion: reduce){
+    .croix i.on,.eyebrow::before,.ville.active .point{animation:none !important}
+    html{scroll-behavior:auto}
+  }
+
+  /* ---------- Sections communes ---------- */
+  .section{padding:78px 0}
+  .titre-section{font-size:clamp(1.5rem,3vw,2.05rem);font-weight:800;margin-bottom:12px}
+  .titre-section .grad{background:var(--degrade);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .intro-section{color:var(--gris);max-width:40rem;margin-bottom:44px}
+
+  /* ---------- Parcours ---------- */
+  .parcours{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .etape{
+    background:var(--blanc);border:1px solid var(--ligne);border-radius:18px;padding:28px;
+    box-shadow:0 4px 20px rgba(19,36,51,.04);
+  }
+  .etape .num{
+    font-family:'Sora',sans-serif;font-weight:800;color:var(--bleu);
+    font-size:.8rem;letter-spacing:.12em;margin-bottom:12px;display:flex;align-items:center;gap:10px;
+  }
+  .badge-premium{
+    font-size:.66rem;letter-spacing:.06em;font-weight:800;
+    background:var(--degrade);color:#fff;border-radius:99px;padding:3px 10px;
+  }
+  .etape h3{font-size:1.08rem;margin-bottom:8px}
+  .etape p{font-size:.94rem;color:var(--gris)}
+  .code-chip{
+    display:inline-block;margin-top:14px;
+    background:var(--menthe);border:1px dashed var(--vert);
+    border-radius:8px;padding:6px 12px;
+    font-size:.9rem;font-weight:600;color:var(--vert-fonce);
+  }
+
+  /* ---------- Fonctionnalités ---------- */
+  .fond-doux{background:linear-gradient(180deg,var(--ciel) 0%,var(--menthe) 100%)}
+  .fonctions{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .fonction{
+    background:var(--blanc);border-radius:18px;padding:26px;border:1px solid var(--ligne);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .fonction:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(19,36,51,.08)}
+  .fonction .ico{
+    width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    font-size:1.35rem;margin-bottom:14px;background:var(--menthe);
+  }
+  .fonction:nth-child(even) .ico{background:var(--ciel)}
+  .fonction h3{font-size:1.02rem;margin-bottom:6px}
+  .fonction p{font-size:.92rem;color:var(--gris)}
+
+  /* ---------- Roadmap RN1 ---------- */
+  .roadmap{position:relative}
+  .route{
+    display:flex;justify-content:space-between;align-items:flex-start;
+    position:relative;margin-top:56px;padding:0 8px;
+  }
+  .route::before{
+    content:"";position:absolute;left:2%;right:2%;top:11px;height:8px;border-radius:4px;
+    background:
+      repeating-linear-gradient(90deg,transparent 0 18px,#F2C94C 18px 34px) center/100% 2px no-repeat,
+      var(--nuit);
+  }
+  .ville{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:10px;width:16%;text-align:center}
+  .point{
+    width:30px;height:30px;border-radius:50%;
+    background:var(--blanc);border:3px solid #B9C9D6;
+  }
+  .ville .nom{font-family:'Sora',sans-serif;font-weight:700;font-size:.95rem}
+  .ville .statut{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#93A6B7}
+  .ville.active .point{
+    background:var(--vert);border-color:var(--vert-vif);
+    box-shadow:0 0 0 6px rgba(56,182,80,.2);
+    animation:pulse 2s infinite;
+  }
+  .ville.active .nom{color:var(--vert-fonce);font-size:1.05rem}
+  .ville.active .statut{color:var(--vert-fonce)}
+  .ville.active .statut::before{content:"● "}
+
+  /* ---------- Pharmaciens ---------- */
+  .pharmaciens{
+    background:var(--nuit);color:#fff;border-radius:26px;padding:56px 48px;
+    display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;
+    background-image:radial-gradient(500px 260px at 100% 0%, rgba(56,182,80,.18), transparent 60%);
+  }
+  .pharmaciens h2{font-size:clamp(1.4rem,2.8vw,2rem);margin-bottom:12px}
+  .pharmaciens p{color:#B9C6D8;font-size:1rem}
+  .pharmaciens ul{list-style:none;margin:20px 0 0}
+  .pharmaciens li{padding-left:26px;position:relative;margin-bottom:11px;font-size:.95rem;color:#DCE6F2}
+  .pharmaciens li::before{content:"✓";position:absolute;left:0;color:var(--vert-vif);font-weight:800}
+  .carte-portail{
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+    border-radius:18px;padding:30px;text-align:center;
+  }
+  .carte-portail h3{margin-bottom:6px}
+  .carte-portail .adresse{font-size:.95rem;color:var(--vert-vif);margin:8px 0 22px;word-break:break-all}
+
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--ligne);padding:44px 0;font-size:.88rem;color:var(--gris);background:var(--blanc)}
+  .foot{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap}
+  .foot a{color:var(--gris);text-decoration:none}
+  .foot a:hover{color:var(--encre);text-decoration:underline}
+  .foot .societe{max-width:22rem}
+  .foot .societe img{height:40px;width:auto;margin-bottom:12px;display:block}
+  .foot h4{font-family:'Sora',sans-serif;font-size:.95rem;color:var(--encre);margin-bottom:10px}
+  .foot ul{list-style:none}
+  .foot li{margin-bottom:7px}
+  .foot .mention{margin-top:26px;font-size:.8rem;color:#93A6B7}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:880px){
+    .hero-grille{grid-template-columns:1fr;gap:44px}
+    .croix-scene{order:-1}
+    .parcours,.fonctions{grid-template-columns:1fr}
+    .pharmaciens{grid-template-columns:1fr;padding:36px 24px}
+    .nav-liens .cache-mobile{display:none}
+    .route{flex-direction:column;gap:30px;padding-left:12px;align-items:flex-start;margin-top:36px}
+    .route::before{left:25px;right:auto;top:2%;bottom:2%;width:8px;height:auto;
+      background:
+        repeating-linear-gradient(180deg,transparent 0 18px,#F2C94C 18px 34px) center/2px 100% no-repeat,
+        var(--nuit);
+    }
+    .ville{flex-direction:row;width:100%;text-align:left;gap:16px}
+    .ville .textes{display:flex;flex-direction:column}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo-nav" href="#" aria-label="NoviMed — accueil">
+      <img src="novimed-logo-mark.png" alt="NoviMed">
+    </a>
+    <nav class="nav-liens" aria-label="Navigation principale">
+      <a href="#parcours" class="cache-mobile">Comment ça marche</a>
+      <a href="#fonctions" class="cache-mobile">Fonctionnalités</a>
+      <a href="#villes" class="cache-mobile">Villes</a>
+      <a href="#pharmaciens" class="cache-mobile">Pharmaciens</a>
+      <a class="btn btn-bleu" href="#telecharger">Obtenir l'appli</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="telecharger">
+    <div class="wrap hero-grille">
+      <div>
+        <span class="eyebrow">Togo · Première phase : Lomé</span>
+        <h1>Votre santé, <span class="grad">à portée de main.</span></h1>
+        <p class="sous">
+          NoviMed vous dit quelles pharmacies ont votre médicament disponible,
+          lesquelles sont de garde cette nuit, et vous évite les déplacements inutiles.
+        </p>
+        <div class="hero-ctas">
+          <span class="badge-play" aria-label="Bientôt disponible sur Google Play">
+            <span class="tri" aria-hidden="true"></span>
+            <span>Google Play<small>BIENTÔT DISPONIBLE</small></span>
+          </span>
+          <a class="btn btn-contour" href="#pharmaciens">Vous êtes pharmacien ?</a>
+        </div>
+        <p class="note-testeurs">L'application est en phase de test avec des citoyens et des pharmacies de Lomé.</p>
+      </div>
+      <div>
+        <div class="croix-scene">
+          <div class="croix-cadre" aria-hidden="true">
+            <div class="croix" id="croix"></div>
+          </div>
+          <p class="croix-legende">La croix est allumée : une pharmacie de garde est ouverte.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARCOURS -->
+  <section class="section" id="parcours">
+    <div class="wrap">
+      <h2 class="titre-section">Trois étapes, <span class="grad">zéro déplacement inutile</span></h2>
+      <p class="intro-section">Chercher un médicament de pharmacie en pharmacie, c'est terminé.</p>
+      <div class="parcours">
+        <article class="etape">
+          <span class="num">ÉTAPE 1</span>
+          <h3>Cherchez votre médicament</h3>
+          <p>Tapez son nom, même approximatif. NoviMed affiche les pharmacies du Togo — première phase à Lomé — qui l'ont disponible, de la plus proche à la plus éloignée.</p>
+        </article>
+        <article class="etape">
+          <span class="num">ÉTAPE 2 <span class="badge-premium">PREMIUM</span></span>
+          <h3>Réservez en un geste</h3>
+          <p>Abonnés Premium : votre réservation est gardée 45 minutes, le temps d'arriver. Vous recevez un code de retrait à présenter au comptoir.</p>
+          <span class="code-chip mono">Code : K7M3XQ</span>
+        </article>
+        <article class="etape">
+          <span class="num">ÉTAPE 3</span>
+          <h3>Retirez et réglez sur place</h3>
+          <p>Présentez votre code au pharmacien, réglez votre achat au comptoir, et le tour est joué. Votre médicament vous attendait.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FONCTIONNALITÉS -->
+  <section class="section fond-doux" id="fonctions">
+    <div class="wrap">
+      <h2 class="titre-section">Pensée pour la santé au quotidien</h2>
+      <p class="intro-section">Tout ce qu'il faut pour que la pharmacie vienne à vous, pas l'inverse.</p>
+      <div class="fonctions">
+        <article class="fonction">
+          <span class="ico" aria-hidden="true">🌙</span>
+          <h3>Pharmacies de garde</h3>
+          <p>À toute heure, voyez immédiatement quelles officines sont de garde et ouvertes autour de vous.</p>
+        </article>
+        <article class="fonction">
+          <span class="ico" aria-hidden="true">📄</span>
+          <h3>Vos ordonnances, en sécurité</h3>
+          <p>Photographiez et conservez vos ordonnances dans l'appli pour les retrouver à chaque renouvellement.</p>
+        </article>
+        <article class="fonction">
+          <span class="ico" aria-hidden="true">🚨</span>
+          <h3>Numéros d'urgence</h3>
+          <p>Ambulances, pompiers, police : les numéros qui sauvent, accessibles en un geste au moment où chaque seconde compte.</p>
+        </article>
+        <article class="fonction">
+          <span class="ico" aria-hidden="true">🌦️</span>
+          <h3>Conseils santé du jour</h3>
+          <p>Des recommandations de prévention adaptées à la météo réelle de Lomé — ou de la ville dans laquelle vous êtes.</p>
+        </article>
+        <article class="fonction">
+          <span class="ico" aria-hidden="true">📍</span>
+          <h3>Autour de vous</h3>
+          <p>Géolocalisation précise des officines, itinéraire et téléphone en un clic pour appeler avant de venir.</p>
+        </article>
+        <article class="fonction">
+          <span class="ico" aria-hidden="true">🔔</span>
+          <h3>Réservation suivie</h3>
+          <p>La pharmacie est prévenue dès votre réservation et prépare votre retrait avant votre arrivée.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP RN1 -->
+  <section class="section roadmap" id="villes">
+    <div class="wrap">
+      <h2 class="titre-section">NoviMed trace sa route, <span class="grad">ville après ville</span></h2>
+      <p class="intro-section">Le déploiement suit la Nationale, du sud vers le nord. Aujourd'hui à Lomé, demain dans tout le Togo.</p>
+      <div class="route">
+        <div class="ville active">
+          <span class="point" aria-hidden="true"></span>
+          <div class="textes">
+            <span class="nom">Lomé</span>
+            <span class="statut">Disponible</span>
+          </div>
+        </div>
+        <div class="ville">
+          <span class="point" aria-hidden="true"></span>
+          <div class="textes">
+            <span class="nom">Tsévié</span>
+            <span class="statut">À venir</span>
+          </div>
+        </div>
+        <div class="ville">
+          <span class="point" aria-hidden="true"></span>
+          <div class="textes">
+            <span class="nom">Atakpamé</span>
+            <span class="statut">À venir</span>
+          </div>
+        </div>
+        <div class="ville">
+          <span class="point" aria-hidden="true"></span>
+          <div class="textes">
+            <span class="nom">Sokodé</span>
+            <span class="statut">À venir</span>
+          </div>
+        </div>
+        <div class="ville">
+          <span class="point" aria-hidden="true"></span>
+          <div class="textes">
+            <span class="nom">Kara</span>
+            <span class="statut">À venir</span>
+          </div>
+        </div>
+        <div class="ville">
+          <span class="point" aria-hidden="true"></span>
+          <div class="textes">
+            <span class="nom">Dapaong</span>
+            <span class="statut">À venir</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHARMACIENS -->
+  <section class="section" id="pharmaciens">
+    <div class="wrap">
+      <div class="pharmaciens">
+        <div>
+          <h2>Pharmaciens, rejoignez le réseau NoviMed</h2>
+          <p>Inscription gratuite, validation sur numéro d'agrément ONPT.</p>
+          <ul>
+            <li>Recevez les réservations des citoyens en temps réel</li>
+            <li>Signalez vos gardes et vos horaires en un clic</li>
+            <li>Tenez vos disponibilités à jour depuis un tableau de bord simple</li>
+            <li>Formule Premium : statistiques des recherches autour de votre officine</li>
+          </ul>
+        </div>
+        <div class="carte-portail">
+          <h3>Espace pharmacie</h3>
+          <p class="adresse mono">pharmacie.novimedtg.com</p>
+          <a class="btn btn-vert" href="https://pharmacie.novimedtg.com">Accéder au portail</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="societe">
+        <img src="novimed-logo.png" alt="NoviMed — Votre santé, à portée de main">
+        <p>Un produit de SAGE EMPIRE SARL<br>Agbalépédo, Lomé — Togo</p>
+      </div>
+      <div>
+        <h4>Application</h4>
+        <ul>
+          <li><a href="#parcours">Comment ça marche</a></li>
+          <li><a href="#fonctions">Fonctionnalités</a></li>
+          <li><a href="#villes">Villes couvertes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="https://novimed-backend.onrender.com/legal/privacy-policy">Politique de confidentialité</a></li>
+          <li><a href="https://novimed-backend.onrender.com/legal/account-deletion">Suppression de compte</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:contacts@novimedtg.com">contacts@novimedtg.com</a></li>
+          <li><a href="https://pharmacie.novimedtg.com">Espace pharmacie</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="mention">© 2026 SAGE EMPIRE SARL — NoviMed. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script>
+  // Croix de garde : grille 7×7, cellules allumées en forme de croix
+  const grille = document.getElementById('croix');
+  for (let r = 0; r < 7; r++) {
+    for (let c = 0; c < 7; c++) {
+      const cell = document.createElement('i');
+      if ((r >= 2 && r <= 4) || (c >= 2 && c <= 4)) {
+        cell.className = 'on';
+      }
+      grille.appendChild(cell);
+    }
+  }
+</script>
+
+</body>
+</html>
