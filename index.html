@@ -250,6 +250,15 @@
   .carte-portail h3{margin-bottom:6px}
   .carte-portail .adresse{font-size:.95rem;color:var(--vert-vif);margin:8px 0 22px;word-break:break-all}
 
+  /* ---------- Premium (carte réutilisant le style .pharmaciens) ---------- */
+  .premium-carte{
+    background-image:radial-gradient(500px 260px at 100% 0%, rgba(0,104,195,.24), transparent 60%);
+  }
+  .premium-carte .badge-premium{display:inline-block;margin-bottom:14px}
+  .premium-carte .carte-portail .prix-ligne{
+    font-size:.92rem;color:var(--vert-vif);margin:8px 0 22px;font-weight:700;
+  }
+
   /* ---------- Footer ---------- */
   footer{border-top:1px solid var(--ligne);padding:44px 0;font-size:.88rem;color:var(--gris);background:var(--blanc)}
   .foot{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap}
@@ -425,6 +434,29 @@
           <h3>Réservation suivie</h3>
           <p>La pharmacie est prévenue dès votre réservation et prépare votre retrait avant votre arrivée.</p>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREMIUM -->
+  <section class="section" id="premium">
+    <div class="wrap">
+      <div class="pharmaciens premium-carte">
+        <div>
+          <span class="badge-premium">PREMIUM</span>
+          <h2>Débloquez toutes les fonctionnalités NoviMed</h2>
+          <p>Réservation de médicaments, ordonnances en sécurité, priorité pendant les gardes — activable en quelques minutes, par Flooz ou T-Money, sans carte bancaire.</p>
+          <ul>
+            <li>Réservez vos médicaments en un geste</li>
+            <li>Conservez vos ordonnances en sécurité</li>
+            <li>Priorité sur les pharmacies de garde</li>
+          </ul>
+        </div>
+        <div class="carte-portail">
+          <h3>Activer Premium</h3>
+          <p class="prix-ligne mono">500 F / mois · 5 500 F / an</p>
+          <a class="btn btn-vert" href="/premium.html">Activer maintenant</a>
+        </div>
       </div>
     </div>
   </section>
