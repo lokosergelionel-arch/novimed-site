@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NoviMed — Votre santé, à portée de main</title>
-<meta name="description" content="NoviMed vous connecte aux pharmacies du Togo : médicaments disponibles, pharmacies de garde, réservations de médicaments et numérisation d'ordonnances. Première phase : Lomé. Bientôt sur Google Play.">
+<meta name="description" content="NoviMed vous connecte aux pharmacies du Togo : médicaments disponibles, pharmacies de garde, réservations de médicaments et numérisation d'ordonnances. Première phase : Lomé. Disponible sur Google Play.">
 <meta name="google-site-verification" content="lrRIZojuDALJ-CepkbYQgSs_gGdLxge0AlTC67toH7E" />
 <link rel="icon" type="image/png" href="novimed-logo-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -127,8 +127,10 @@
   .badge-store{
     display:inline-flex;align-items:center;gap:10px;
     background:var(--nuit);color:#fff;border-radius:12px;padding:9px 16px;
-    font-weight:700;font-size:.92rem;
+    font-weight:700;font-size:.92rem;text-decoration:none;
+    transition:transform .15s ease, background .15s ease;
   }
+  a.badge-store:hover{background:#0d3557;transform:translateY(-1px)}
   .badge-store .ico-store{width:16px;flex:none;display:flex;align-items:center;justify-content:center}
   .badge-store .ico-store svg{width:15px;height:15px;fill:#fff}
   .badge-store .tri{width:0;height:0;border-style:solid;border-width:8px 0 8px 13px;border-color:transparent transparent transparent var(--vert-vif)}
@@ -308,12 +310,11 @@
               <small>BIENTÔT DISPONIBLE</small>
             </span>
           </a>
-          <!-- 🔗 À CONNECTER : remplacer href="#" par le lien Google Play dès publication -->
-          <a href="#" class="dropdown-item" role="menuitem">
+          <a href="https://play.google.com/store/apps/details?id=com.novimed.app&hl=fr" class="dropdown-item" role="menuitem" target="_blank" rel="noopener noreferrer">
             <span class="dd-ico"><span class="tri" aria-hidden="true"></span></span>
             <span class="dd-texte">
               <strong>Google Play</strong>
-              <small>BIENTÔT DISPONIBLE</small>
+              <small>DISPONIBLE</small>
             </span>
           </a>
         </div>
@@ -334,18 +335,18 @@
           lesquelles sont de garde cette nuit, et vous évite les déplacements inutiles.
         </p>
         <div class="hero-ctas">
-          <!-- 🆕 Deux badges : Google Play + App Store -->
-          <div class="stores-rangee" aria-label="Bientôt disponible sur les stores">
+          <!-- 🆕 Deux badges : Google Play (disponible) + App Store (bientôt) -->
+          <div class="stores-rangee" aria-label="Disponible sur Google Play, bientôt sur l'App Store">
             <span class="badge-store">
               <span class="ico-store">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.415 2.19-1.244 3.03-.847.86-2.03 1.53-3.06 1.44-.13-1.1.42-2.24 1.24-3.06.83-.85 2.28-1.47 3.06-1.41zM20.7 17.24c-.55 1.27-.81 1.83-1.52 2.95-.99 1.56-2.38 3.5-4.11 3.52-1.53.02-1.93-1-4.01-.99-2.08.01-2.52 1.01-4.05.99-1.73-.02-3.05-1.77-4.04-3.33C.44 16.7-.4 12.03 1.31 8.9c1.06-1.94 2.97-3.17 5.03-3.2 1.6-.03 2.9 1.08 3.86 1.08.94 0 2.62-1.34 4.42-1.14.75.03 2.86.3 4.21 2.26-.11.07-2.52 1.47-2.49 4.38.03 3.47 3.05 4.62 3.09 4.64-.03.09-.48 1.66-1.63 3.32z"/></svg>
               </span>
               <span>App Store<small>BIENTÔT DISPONIBLE</small></span>
             </span>
-            <span class="badge-store">
+            <a class="badge-store" href="https://play.google.com/store/apps/details?id=com.novimed.app&hl=fr" target="_blank" rel="noopener noreferrer" aria-label="Télécharger NoviMed sur Google Play">
               <span class="ico-store"><span class="tri" aria-hidden="true"></span></span>
-              <span>Google Play<small>BIENTÔT DISPONIBLE</small></span>
-            </span>
+              <span>Google Play<small>DISPONIBLE — TÉLÉCHARGER</small></span>
+            </a>
           </div>
           <a class="btn btn-contour" href="#pharmaciens">Vous êtes pharmacien ?</a>
         </div>
