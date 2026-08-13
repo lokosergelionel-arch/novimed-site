@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NoviMed Premium — Activer mon abonnement</title>
+<meta name="description" content="Activez NoviMed Premium par Flooz ou T-Money. Paiement mobile money, sans carte bancaire.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="novimed-logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bleu:#0068C3;
+    --bleu-fonce:#00509B;
+    --nuit:#0A2A45;
+    --vert:#38B650;
+    --vert-vif:#57C666;
+    --vert-fonce:#2B9440;
+    --menthe:#EFFAF1;
+    --ciel:#EFF6FD;
+    --encre:#132433;
+    --gris:#5A6B7D;
+    --ligne:#E2ECF2;
+    --blanc:#FFFFFF;
+    --rouge:#D64545;
+    --degrade:linear-gradient(93deg,var(--bleu) 0%,var(--vert) 100%);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'Public Sans',system-ui,sans-serif;
+    color:var(--encre);
+    background:linear-gradient(180deg,var(--ciel) 0%,var(--blanc) 320px);
+    line-height:1.6;
+    min-height:100vh;
+  }
+  h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.2}
+  .mono{font-family:'IBM Plex Mono',monospace}
+  .wrap{max-width:520px;margin:0 auto;padding:0 20px}
+
+  header{padding:26px 0}
+  .logo-nav{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+  .logo-nav img{height:30px;width:auto;display:block}
+
+  main{padding:20px 0 80px}
+
+  .carte{
+    background:var(--blanc);border:1px solid var(--ligne);border-radius:22px;
+    padding:32px;box-shadow:0 20px 50px rgba(19,36,51,.08);
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--vert-fonce);background:var(--menthe);border:1px solid #CFEFD6;
+    border-radius:99px;padding:5px 12px;margin-bottom:16px;
+  }
+  h1{font-size:1.55rem;font-weight:800;margin-bottom:8px}
+  .sous{color:var(--gris);font-size:.96rem;margin-bottom:26px}
+
+  /* Choix du plan */
+  .plans{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px}
+  .plan{
+    border:2px solid var(--ligne);border-radius:16px;padding:16px;cursor:pointer;
+    text-align:left;background:var(--blanc);transition:border-color .15s ease,background .15s ease;
+    position:relative;
+  }
+  .plan:hover{border-color:#B9D8F2}
+  .plan input{position:absolute;opacity:0;pointer-events:none}
+  .plan .nom{font-weight:700;font-size:.92rem;color:var(--gris);margin-bottom:6px}
+  .plan .prix{font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem}
+  .plan .prix small{font-size:.72rem;font-weight:600;color:var(--gris)}
+  .plan .eco{display:none;font-size:.72rem;font-weight:700;color:var(--vert-fonce);margin-top:4px}
+  .plan.selected{border-color:var(--vert);background:var(--menthe)}
+  .plan.selected .eco{display:block}
+
+  /* Champs */
+  label{display:block;font-size:.85rem;font-weight:700;margin-bottom:7px;margin-top:18px}
+  input[type=tel]{
+    width:100%;padding:13px 14px;border:2px solid var(--ligne);border-radius:12px;
+    font-size:1rem;font-family:inherit;color:var(--encre);
+  }
+  input[type=tel]:focus{outline:none;border-color:var(--bleu)}
+  .aide{font-size:.8rem;color:var(--gris);margin-top:6px}
+
+  .reseaux{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
+  .reseau{
+    border:2px solid var(--ligne);border-radius:14px;padding:14px;text-align:center;
+    cursor:pointer;font-weight:700;font-size:.95rem;transition:border-color .15s ease,background .15s ease;
+    position:relative;
+  }
+  .reseau input{position:absolute;opacity:0;pointer-events:none}
+  .reseau.selected{border-color:var(--bleu);background:var(--ciel)}
+
+  .btn{
+    display:flex;align-items:center;justify-content:center;gap:8px;width:100%;
+    padding:15px 22px;border-radius:14px;margin-top:26px;
+    font-weight:700;font-size:1rem;font-family:inherit;border:none;cursor:pointer;
+    background:var(--degrade);color:#fff;box-shadow:0 10px 26px rgba(0,104,195,.25);
+    transition:transform .15s ease,opacity .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
+
+  .msg{
+    margin-top:18px;padding:14px 16px;border-radius:12px;font-size:.9rem;font-weight:600;
+    display:none;
+  }
+  .msg.show{display:block}
+  .msg.info{background:var(--ciel);color:var(--bleu-fonce)}
+  .msg.attente{background:#FFF7E0;color:#8A6100}
+  .msg.succes{background:var(--menthe);color:var(--vert-fonce)}
+  .msg.erreur{background:#FDECEC;color:var(--rouge)}
+
+  .spinner{
+    width:16px;height:16px;border-radius:50%;
+    border:2px solid rgba(0,0,0,.15);border-top-color:currentColor;
+    animation:tourne .7s linear infinite;flex:none;
+  }
+  @keyframes tourne{to{transform:rotate(360deg)}}
+
+  .note-securite{margin-top:22px;font-size:.78rem;color:var(--gris);text-align:center}
+
+  footer{padding:30px 0 40px;text-align:center;font-size:.8rem;color:var(--gris)}
+  footer a{color:var(--gris)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo-nav" href="/">
+      <img src="novimed-logo-mark.png" alt="NoviMed">
+      <strong>NoviMed</strong>
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="carte">
+      <span class="eyebrow">Paiement Mobile Money</span>
+      <h1>Activer NoviMed Premium</h1>
+      <p class="sous">Payez par Flooz ou T-Money, sans carte bancaire. Utilisez le même numéro que celui de votre compte NoviMed dans l'application.</p>
+
+      <form id="formPremium">
+        <label>Formule</label>
+        <div class="plans">
+          <label class="plan selected" id="planMensuelLabel">
+            <input type="radio" name="plan" value="monthly" checked>
+            <div class="nom">Mensuel</div>
+            <div class="prix">500 F<small> / mois</small></div>
+          </label>
+          <label class="plan" id="planAnnuelLabel">
+            <input type="radio" name="plan" value="annual">
+            <div class="nom">Annuel</div>
+            <div class="prix">5 500 F<small> / an</small></div>
+            <div class="eco">Soit 458 F/mois</div>
+          </label>
+        </div>
+
+        <label for="telephone">Votre numéro NoviMed</label>
+        <input type="tel" id="telephone" inputmode="tel" placeholder="90 00 00 00" required autocomplete="tel">
+        <p class="aide">C'est le numéro utilisé pour votre inscription dans l'application — c'est aussi ce numéro qui sera débité.</p>
+
+        <label>Réseau Mobile Money</label>
+        <div class="reseaux">
+          <label class="reseau selected" id="floozLabel">
+            <input type="radio" name="network" value="FLOOZ" checked>
+            Flooz
+          </label>
+          <label class="reseau" id="tmoneyLabel">
+            <input type="radio" name="network" value="TMONEY">
+            T-Money
+          </label>
+        </div>
+
+        <button type="submit" class="btn" id="btnPayer">Payer maintenant</button>
+
+        <div class="msg" id="msgZone"></div>
+      </form>
+
+      <p class="note-securite">Paiement sécurisé via PayGate. NoviMed ne stocke jamais vos identifiants Mobile Money.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Un produit de SAGE EMPIRE SARL — <a href="mailto:contacts@novimedtg.com">contacts@novimedtg.com</a></p>
+  </div>
+</footer>
+
+<script>
+  const API_BASE = 'https://novimed-backend.onrender.com';
+
+  const form = document.getElementById('formPremium');
+  const btnPayer = document.getElementById('btnPayer');
+  const msgZone = document.getElementById('msgZone');
+  const telephone = document.getElementById('telephone');
+
+  // Sélection visuelle plan / réseau
+  document.querySelectorAll('.plan').forEach(el => {
+    el.addEventListener('click', () => {
+      document.querySelectorAll('.plan').forEach(p => p.classList.remove('selected'));
+      el.classList.add('selected');
+      el.querySelector('input').checked = true;
+    });
+  });
+  document.querySelectorAll('.reseau').forEach(el => {
+    el.addEventListener('click', () => {
+      document.querySelectorAll('.reseau').forEach(r => r.classList.remove('selected'));
+      el.classList.add('selected');
+      el.querySelector('input').checked = true;
+    });
+  });
+
+  const afficherMsg = (type, texte, avecSpinner) => {
+    msgZone.className = 'msg show ' + type;
+    msgZone.innerHTML = avecSpinner
+      ? `<span style="display:flex;align-items:center;gap:10px"><span class="spinner"></span>${texte}</span>`
+      : texte;
+  };
+
+  let pollTimer = null;
+  const arreterPoll = () => { if (pollTimer) clearInterval(pollTimer); };
+
+  const suivreStatut = (identifier) => {
+    let tentatives = 0;
+    pollTimer = setInterval(async () => {
+      tentatives++;
+      if (tentatives > 40) { // ~2 minutes
+        arreterPoll();
+        afficherMsg('erreur', "Nous n'avons pas reçu de confirmation. Si le montant a été débité, contactez contacts@novimedtg.com avec votre numéro.");
+        btnPayer.disabled = false;
+        btnPayer.textContent = 'Réessayer';
+        return;
+      }
+      try {
+        const res = await fetch(`${API_BASE}/api/citizen-premium/status?identifier=${encodeURIComponent(identifier)}`);
+        const data = await res.json();
+        if (data.status === 'paid') {
+          arreterPoll();
+          afficherMsg('succes', '✅ Paiement confirmé ! Votre Premium NoviMed est activé. Vous pouvez ouvrir l\'application.');
+          btnPayer.style.display = 'none';
+        } else if (data.status === 'failed') {
+          arreterPoll();
+          afficherMsg('erreur', "Le paiement n'a pas abouti (annulé, expiré ou refusé). Vous pouvez réessayer.");
+          btnPayer.disabled = false;
+          btnPayer.textContent = 'Réessayer';
+        }
+      } catch (e) {
+        // on ignore les erreurs réseau ponctuelles et on continue le sondage
+      }
+    }, 3000);
+  };
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    arreterPoll();
+
+    const plan = form.querySelector('input[name="plan"]:checked').value;
+    const network = form.querySelector('input[name="network"]:checked').value;
+    const phone_number = telephone.value.trim();
+
+    if (!phone_number) {
+      afficherMsg('erreur', 'Merci de saisir votre numéro de téléphone.');
+      return;
+    }
+
+    btnPayer.disabled = true;
+    btnPayer.textContent = 'Envoi en cours…';
+    afficherMsg('info', 'Initiation du paiement…', true);
+
+    try {
+      const res = await fetch(`${API_BASE}/api/citizen-premium/pay`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone_number, network, plan })
+      });
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        afficherMsg('erreur', data.message || "Échec de l'initiation du paiement. Réessayez.");
+        btnPayer.disabled = false;
+        btnPayer.textContent = 'Payer maintenant';
+        return;
+      }
+
+      afficherMsg('attente', `Une demande a été envoyée sur le ${plan === 'annual' ? '5 500 F' : '500 F'}. Validez le paiement sur votre téléphone (code PIN ${network === 'FLOOZ' ? 'Flooz' : 'T-Money'}).`, true);
+      btnPayer.textContent = 'En attente de confirmation…';
+      suivreStatut(data.identifier);
+    } catch (err) {
+      afficherMsg('erreur', 'Erreur réseau. Vérifiez votre connexion et réessayez.');
+      btnPayer.disabled = false;
+      btnPayer.textContent = 'Payer maintenant';
+    }
+  });
+</script>
+
+</body>
+</html>
