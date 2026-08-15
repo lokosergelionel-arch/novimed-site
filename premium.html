@@ -59,7 +59,7 @@
   .sous{color:var(--gris);font-size:.96rem;margin-bottom:26px}
 
   /* Choix du plan */
-  .plans{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px}
+  .plans{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:22px}
   .plan{
     border:2px solid var(--ligne);border-radius:16px;padding:16px;cursor:pointer;
     text-align:left;background:var(--blanc);transition:border-color .15s ease,background .15s ease;
@@ -146,16 +146,10 @@
       <form id="formPremium">
         <label>Formule</label>
         <div class="plans">
-          <label class="plan selected" id="planMensuelLabel">
-            <input type="radio" name="plan" value="monthly" checked>
-            <div class="nom">Mensuel</div>
-            <div class="prix">500 F<small> / mois</small></div>
-          </label>
-          <label class="plan" id="planAnnuelLabel">
-            <input type="radio" name="plan" value="annual">
+          <label class="plan selected" id="planAnnuelLabel">
+            <input type="radio" name="plan" value="annual" checked>
             <div class="nom">Annuel</div>
-            <div class="prix">5 500 F<small> / an</small></div>
-            <div class="eco">Soit 458 F/mois</div>
+            <div class="prix">1 000 F<small> / an</small></div>
           </label>
         </div>
 
@@ -287,7 +281,7 @@
         return;
       }
 
-      afficherMsg('attente', `Une demande a été envoyée sur le ${plan === 'annual' ? '5 500 F' : '500 F'}. Validez le paiement sur votre téléphone (code PIN ${network === 'FLOOZ' ? 'Flooz' : 'T-Money'}).`, true);
+      afficherMsg('attente', `Une demande a été envoyée sur le 1 000 F. Validez le paiement sur votre téléphone (code PIN ${network === 'FLOOZ' ? 'Flooz' : 'T-Money'}).`, true);
       btnPayer.textContent = 'En attente de confirmation…';
       suivreStatut(data.identifier);
     } catch (err) {
