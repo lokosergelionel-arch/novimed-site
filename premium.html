@@ -2,179 +2,233 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>NoviMed Premium — Activer mon abonnement</title>
 <meta name="description" content="Activez NoviMed Premium par Flooz ou T-Money. Paiement mobile money, sans carte bancaire.">
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#0056b3">
 <link rel="icon" type="image/png" href="novimed-logo-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bleu:#0068C3;
-    --bleu-fonce:#00509B;
-    --nuit:#0A2A45;
-    --vert:#38B650;
-    --vert-vif:#57C666;
-    --vert-fonce:#2B9440;
-    --menthe:#EFFAF1;
-    --ciel:#EFF6FD;
-    --encre:#132433;
-    --gris:#5A6B7D;
-    --ligne:#E2ECF2;
-    --blanc:#FFFFFF;
-    --rouge:#D64545;
-    --degrade:linear-gradient(93deg,var(--bleu) 0%,var(--vert) 100%);
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{
-    font-family:'Public Sans',system-ui,sans-serif;
-    color:var(--encre);
-    background:linear-gradient(180deg,var(--ciel) 0%,var(--blanc) 320px);
-    line-height:1.6;
-    min-height:100vh;
-  }
-  h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.2}
-  .mono{font-family:'IBM Plex Mono',monospace}
-  .wrap{max-width:520px;margin:0 auto;padding:0 20px}
+/* Page de paiement : même langage que l'accueil, une colonne de réassurance et une carte formulaire. */
+:root{
+  --blue:#0056b3; --blue-700:#00468f; --blue-50:#eef4fc; --blue-100:#d9e7f8;
+  --green:#16a34a; --green-500:#22c55e; --green-700:#15803d; --green-800:#166534; --green-50:#ecfdf3; --green-100:#d3f8e0;
+  --navy:#0b1a33; --ink:#0f1f38; --muted:#4f5d75; --soft:#f3f6fb; --line:#e1e8f2; --white:#fff;
+  --amber-bg:#fff6dc; --amber-ink:#7a5500; --red:#b42318; --red-bg:#fdecea;
+  --f-display:'Sora',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-body:'Public Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --sh-sm:0 1px 2px rgba(15,31,56,.05),0 4px 14px -6px rgba(15,31,56,.08);
+  --sh:0 1px 3px rgba(15,31,56,.05),0 30px 60px -28px rgba(15,31,56,.28);
+  --ease:cubic-bezier(.2,.7,.2,1);
+  color-scheme:light;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--f-body);color:var(--ink);line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased;background:
+  radial-gradient(55% 40% at 90% 0%,rgba(0,86,179,.12),transparent 70%),
+  radial-gradient(40% 35% at 0% 30%,rgba(34,197,94,.10),transparent 70%),
+  linear-gradient(180deg,var(--soft) 0%,var(--white) 520px) var(--white);background-repeat:no-repeat}
+img,svg{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--f-display);line-height:1.15;letter-spacing:-.02em;text-wrap:balance}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px))}
 
-  header{padding:26px 0}
-  .logo-nav{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
-  .logo-nav img{height:30px;width:auto;display:block}
+/* En-tête */
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:76px}
+.logo-nav{display:flex;align-items:center;min-height:44px}
+.logo-nav img{height:32px;width:auto}
+.retour{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 14px 8px 10px;border-radius:12px;font-weight:600;font-size:.92rem;color:var(--muted);text-decoration:none;background:rgba(255,255,255,.7);border:1px solid var(--line);transition:color .2s,background-color .2s}
+.retour:hover{color:var(--ink);background:#fff}
+.retour svg{width:18px;height:18px}
 
-  main{padding:20px 0 80px}
+main{padding-block:clamp(20px,4vw,48px) clamp(64px,9vw,104px)}
+.grille{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px clamp(32px,6vw,72px);align-items:start}
+.grille{grid-template-rows:auto 1fr}
+.carte{grid-column:2;grid-row:1 / span 2}
+.intro,.apres{grid-column:1}
 
-  .carte{
-    background:var(--blanc);border:1px solid var(--ligne);border-radius:22px;
-    padding:32px;box-shadow:0 20px 50px rgba(19,36,51,.08);
-  }
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:8px;
-    font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--vert-fonce);background:var(--menthe);border:1px solid #CFEFD6;
-    border-radius:99px;padding:5px 12px;margin-bottom:16px;
-  }
-  h1{font-size:1.55rem;font-weight:800;margin-bottom:8px}
-  .sous{color:var(--gris);font-size:.96rem;margin-bottom:26px}
+/* Colonne de gauche */
+.intro{padding-top:12px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);background:#fff;border:1px solid var(--blue-100);border-radius:999px;padding:6px 14px 6px 10px;margin-bottom:22px}
+.eyebrow svg{width:14px;height:14px}
+h1{font-size:clamp(2rem,4.4vw,3rem);font-weight:800;letter-spacing:-.03em;line-height:1.08;max-width:17ch}
+.sous{color:var(--muted);font-size:1.06rem;margin-top:18px;max-width:44ch}
+.avantages{list-style:none;display:flex;flex-direction:column;gap:12px}
+.avantages li{display:flex;gap:12px;align-items:flex-start;font-weight:500}
+.ck{width:24px;height:24px;border-radius:50%;background:var(--green-100);color:var(--green-800);display:grid;place-items:center;flex:none;margin-top:1px}
+.ck svg{width:13px;height:13px}
+.deroule{margin-top:34px;padding:22px;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:var(--sh-sm)}
+.deroule h2{font-size:.8rem;font-family:var(--f-body);font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.deroule ol{list-style:none;display:flex;flex-direction:column;gap:12px}
+.deroule li{display:flex;gap:12px;align-items:flex-start;font-size:.95rem;color:var(--muted)}
+.deroule b{color:var(--ink)}
+.deroule .n{width:26px;height:26px;border-radius:50%;background:var(--blue-50);color:var(--blue);font:800 .8rem/26px var(--f-display);text-align:center;flex:none}
 
-  /* Choix du plan */
-  .plans{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:22px}
-  .plan{
-    border:2px solid var(--ligne);border-radius:16px;padding:16px;cursor:pointer;
-    text-align:left;background:var(--blanc);transition:border-color .15s ease,background .15s ease;
-    position:relative;
-  }
-  .plan:hover{border-color:#B9D8F2}
-  .plan input{position:absolute;opacity:0;pointer-events:none}
-  .plan .nom{font-weight:700;font-size:.92rem;color:var(--gris);margin-bottom:6px}
-  .plan .prix{font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem}
-  .plan .prix small{font-size:.72rem;font-weight:600;color:var(--gris)}
-  .plan .eco{display:none;font-size:.72rem;font-weight:700;color:var(--vert-fonce);margin-top:4px}
-  .plan.selected{border-color:var(--vert);background:var(--menthe)}
-  .plan.selected .eco{display:block}
+/* Carte formulaire */
+.carte{background:var(--white);border:1px solid var(--line);border-radius:28px;padding:clamp(22px,4vw,36px);box-shadow:var(--sh)}
+.carte-titre{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:20px;margin-bottom:6px;border-bottom:1px solid var(--line)}
+.carte-titre h2{font-size:1.2rem;font-weight:700}
+.carte-titre .securise{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;color:var(--green-800);background:var(--green-50);border:1px solid var(--green-100);padding:5px 10px;border-radius:999px;white-space:nowrap}
+.carte-titre .securise svg{width:13px;height:13px}
 
-  /* Champs */
-  label{display:block;font-size:.85rem;font-weight:700;margin-bottom:7px;margin-top:18px}
-  input[type=tel]{
-    width:100%;padding:13px 14px;border:2px solid var(--ligne);border-radius:12px;
-    font-size:1rem;font-family:inherit;color:var(--encre);
-  }
-  input[type=tel]:focus{outline:none;border-color:var(--bleu)}
-  .aide{font-size:.8rem;color:var(--gris);margin-top:6px}
+.champ-titre{display:block;font-size:.88rem;font-weight:700;margin:22px 0 8px;color:var(--ink)}
+.plans{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+.plan{display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;cursor:pointer;border:2px solid var(--line);border-radius:18px;padding:16px 18px;background:var(--white);transition:border-color .2s,background-color .2s}
+.plan input,.reseau input{position:absolute;opacity:0;pointer-events:none}
+.plan .nom{font-weight:700;font-size:.95rem}
+.plan .detail{display:block;font-size:.82rem;color:var(--muted);font-weight:500}
+.plan .prix{font-family:var(--f-display);font-weight:800;font-size:1.6rem;letter-spacing:-.03em;white-space:nowrap}
+.plan .prix small{font-size:.8rem;font-weight:600;color:var(--muted);letter-spacing:0}
 
-  .reseaux{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
-  .reseau{
-    border:2px solid var(--ligne);border-radius:14px;padding:14px;text-align:center;
-    cursor:pointer;font-weight:700;font-size:.95rem;transition:border-color .15s ease,background .15s ease;
-    position:relative;
-  }
-  .reseau input{position:absolute;opacity:0;pointer-events:none}
-  .reseau.selected{border-color:var(--bleu);background:var(--ciel)}
+input[type=tel]{width:100%;min-height:54px;padding:13px 16px;border:2px solid #7b889c;border-radius:14px;font-size:1.08rem;font-family:inherit;font-weight:600;letter-spacing:.02em;color:var(--ink);background:#fff;transition:border-color .2s,box-shadow .2s}
+input[type=tel]::placeholder{color:#6b778b;font-weight:500}
+input[type=tel]:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,86,179,.12)}
+.aide{font-size:.84rem;color:var(--muted);margin-top:8px}
 
-  .btn{
-    display:flex;align-items:center;justify-content:center;gap:8px;width:100%;
-    padding:15px 22px;border-radius:14px;margin-top:26px;
-    font-weight:700;font-size:1rem;font-family:inherit;border:none;cursor:pointer;
-    background:var(--degrade);color:#fff;box-shadow:0 10px 26px rgba(0,104,195,.25);
-    transition:transform .15s ease,opacity .15s ease;
-  }
-  .btn:hover{transform:translateY(-1px)}
-  .btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
+.reseaux{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.reseau{position:relative;display:flex;align-items:center;gap:12px;min-height:64px;padding:12px 14px;border:2px solid var(--line);border-radius:16px;cursor:pointer;font-weight:700;font-size:1rem;background:#fff;transition:border-color .2s,background-color .2s}
+.reseau .radio{width:20px;height:20px;border-radius:50%;border:2px solid #7b889c;flex:none;display:grid;place-items:center;transition:border-color .2s}
+.reseau .radio::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--blue);transform:scale(0);transition:transform .2s var(--ease)}
 
-  .msg{
-    margin-top:18px;padding:14px 16px;border-radius:12px;font-size:.9rem;font-weight:600;
-    display:none;
-  }
-  .msg.show{display:block}
-  .msg.info{background:var(--ciel);color:var(--bleu-fonce)}
-  .msg.attente{background:#FFF7E0;color:#8A6100}
-  .msg.succes{background:var(--menthe);color:var(--vert-fonce)}
-  .msg.erreur{background:#FDECEC;color:var(--rouge)}
+/* État sélectionné : suit l'état réel du bouton radio quand :has() est disponible */
+.plan.selected{border-color:var(--green);background:var(--green-50)}
+.reseau.selected{border-color:var(--blue);background:var(--blue-50)}
+.reseau.selected .radio{border-color:var(--blue)}
+.reseau.selected .radio::after{transform:scale(1)}
+@supports selector(:has(*)){
+  .plan.selected,.reseau.selected{border-color:var(--line);background:#fff}
+  .reseau.selected .radio{border-color:#7b889c}
+  .reseau.selected .radio::after{transform:scale(0)}
+  .plan:has(input:checked){border-color:var(--green);background:var(--green-50)}
+  .reseau:has(input:checked){border-color:var(--blue);background:var(--blue-50)}
+  .reseau:has(input:checked) .radio{border-color:var(--blue)}
+  .reseau:has(input:checked) .radio::after{transform:scale(1)}
+  .plan:has(input:focus-visible),.reseau:has(input:focus-visible){outline:3px solid var(--blue);outline-offset:3px}
+}
+.reseau:hover,.plan:hover{border-color:#a9c6e8}
 
-  .spinner{
-    width:16px;height:16px;border-radius:50%;
-    border:2px solid rgba(0,0,0,.15);border-top-color:currentColor;
-    animation:tourne .7s linear infinite;flex:none;
-  }
-  @keyframes tourne{to{transform:rotate(360deg)}}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:56px;padding:15px 22px;border-radius:16px;margin-top:28px;font:700 1.04rem/1.2 var(--f-body);border:none;cursor:pointer;background:var(--blue);color:#fff;box-shadow:0 14px 30px -14px rgba(0,86,179,.8);transition:transform .2s var(--ease),background-color .2s,opacity .2s}
+.btn:hover{background:var(--blue-700);transform:translateY(-1px)}
+.btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
 
-  .note-securite{margin-top:22px;font-size:.78rem;color:var(--gris);text-align:center}
+.msg{margin-top:18px;padding:14px 16px;border-radius:14px;font-size:.92rem;font-weight:600;display:none;line-height:1.5}
+.msg.show{display:block}
+.msg.info{background:var(--blue-50);color:var(--blue-700)}
+.msg.attente{background:var(--amber-bg);color:var(--amber-ink)}
+.msg.succes{background:var(--green-50);color:var(--green-800);border:1px solid var(--green-100)}
+.msg.erreur{background:var(--red-bg);color:var(--red)}
+.spinner{width:16px;height:16px;border-radius:50%;border:2px solid rgba(0,0,0,.15);border-top-color:currentColor;animation:tourne .7s linear infinite;flex:none}
+@keyframes tourne{to{transform:rotate(360deg)}}
 
-  footer{padding:30px 0 40px;text-align:center;font-size:.8rem;color:var(--gris)}
-  footer a{color:var(--gris)}
+.note-securite{display:flex;align-items:flex-start;gap:10px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line);font-size:.84rem;color:var(--muted)}
+.note-securite svg{width:18px;height:18px;flex:none;color:var(--green-700);margin-top:1px}
+
+footer{border-top:1px solid var(--line);background:var(--soft);padding-block:28px 36px;font-size:.88rem;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px}
+footer nav{display:flex;flex-wrap:wrap;gap:4px 18px}
+footer a{color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+footer a:hover{color:var(--blue);text-decoration:underline}
+
+/* Apparition douce */
+.entree{animation:entree .7s var(--ease) both}
+.entree.d1{animation-delay:.08s}
+@keyframes entree{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+@media (max-width:860px){
+  .grille{grid-template-columns:minmax(0,1fr)}
+  .intro{padding-top:0}
+  .carte,.intro,.apres{grid-column:1;grid-row:auto}
+}
+@media (max-width:420px){
+  .retour span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .retour{padding:8px 12px}
+  .reseau{gap:10px;padding:12px}
+  .carte-titre h2{font-size:1.08rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap">
-    <a class="logo-nav" href="/">
-      <img src="novimed-logo-mark.png" alt="NoviMed">
-      <strong>NoviMed</strong>
+    <a class="logo-nav" href="/" aria-label="NoviMed, accueil">
+      <img src="novimed-logo-mark.png" alt="NoviMed" width="113" height="32">
     </a>
+    <a class="retour" href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span>Retour à l'accueil</span></a>
   </div>
 </header>
 
 <main>
-  <div class="wrap">
-    <div class="carte">
-      <span class="eyebrow">Paiement Mobile Money</span>
+  <div class="wrap grille">
+    <div class="intro entree">
+      <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="19" height="13" rx="3"/><path d="M2.5 10.5h19"/></svg>Paiement Mobile Money</span>
       <h1>Activer NoviMed Premium</h1>
       <p class="sous">Payez par Flooz ou T-Money, sans carte bancaire. Utilisez le même numéro que celui de votre compte NoviMed dans l'application.</p>
+    </div>
+
+    <div class="carte entree d1">
+      <div class="carte-titre">
+        <h2>Votre paiement</h2>
+        <span class="securise"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Sécurisé</span>
+      </div>
 
       <form id="formPremium">
-        <label>Formule</label>
-        <div class="plans">
+        <span class="champ-titre" id="lblFormule">Formule</span>
+        <div class="plans" role="radiogroup" aria-labelledby="lblFormule">
           <label class="plan selected" id="planAnnuelLabel">
             <input type="radio" name="plan" value="annual" checked>
-            <div class="nom">Annuel</div>
-            <div class="prix">1 000 F<small> / an</small></div>
+            <span><span class="nom">Annuel</span><span class="detail">Premium pendant 12&nbsp;mois</span></span>
+            <span class="prix">1 000 F<small> / an</small></span>
           </label>
         </div>
 
-        <label for="telephone">Votre numéro NoviMed</label>
+        <label class="champ-titre" for="telephone">Votre numéro NoviMed</label>
         <input type="tel" id="telephone" inputmode="tel" placeholder="90 00 00 00" required autocomplete="tel">
         <p class="aide">C'est le numéro utilisé pour votre inscription dans l'application — c'est aussi ce numéro qui sera débité.</p>
 
-        <label>Réseau Mobile Money</label>
-        <div class="reseaux">
+        <span class="champ-titre" id="lblReseau">Réseau Mobile Money</span>
+        <div class="reseaux" role="radiogroup" aria-labelledby="lblReseau">
           <label class="reseau selected" id="floozLabel">
             <input type="radio" name="network" value="FLOOZ" checked>
-            Flooz
+            <span class="radio" aria-hidden="true"></span>
+            <span>Flooz</span>
           </label>
           <label class="reseau" id="tmoneyLabel">
             <input type="radio" name="network" value="TMONEY">
-            T-Money
+            <span class="radio" aria-hidden="true"></span>
+            <span>T-Money</span>
           </label>
         </div>
 
         <button type="submit" class="btn" id="btnPayer">Payer maintenant</button>
 
-        <div class="msg" id="msgZone"></div>
+        <div class="msg" id="msgZone" role="status" aria-live="polite"></div>
       </form>
 
-      <p class="note-securite">Paiement sécurisé via PayGate. NoviMed ne stocke jamais vos identifiants Mobile Money.</p>
+      <p class="note-securite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.6-3.4 8.4-8 9-4.6-.6-8-4.4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span>Paiement sécurisé via PayGate. NoviMed ne stocke jamais vos identifiants Mobile Money.</span></p>
+    </div>
+
+    <div class="apres entree d1">
+      <ul class="avantages">
+        <li><span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Réservez vos médicaments, gardés 45&nbsp;minutes</li>
+        <li><span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Gardez vos ordonnances protégées dans l'appli</li>
+        <li><span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Soyez prévenu dès qu'un produit revient en stock</li>
+      </ul>
+      <div class="deroule">
+        <h2>Comment ça se passe</h2>
+        <ol>
+          <li><span class="n">1</span><span><b>Saisissez votre numéro</b> et choisissez Flooz ou T-Money.</span></li>
+          <li><span class="n">2</span><span><b>Validez sur votre téléphone</b> avec votre code PIN Mobile Money.</span></li>
+          <li><span class="n">3</span><span><b>C'est prêt.</b> Ouvrez l'application : votre Premium est activé.</span></li>
+        </ol>
+      </div>
     </div>
   </div>
 </main>
@@ -182,6 +236,11 @@
 <footer>
   <div class="wrap">
     <p>Un produit de SAGE EMPIRE SARL — <a href="mailto:contacts@novimedtg.com">contacts@novimedtg.com</a></p>
+    <nav aria-label="Liens légaux">
+      <a href="/">Accueil</a>
+      <a href="https://novimed-backend.onrender.com/legal/privacy-policy">Politique de confidentialité</a>
+      <a href="https://novimed-backend.onrender.com/legal/account-deletion">Suppression de compte</a>
+    </nav>
   </div>
 </footer>
 
