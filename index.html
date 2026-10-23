@@ -28,7 +28,7 @@
 <meta name="twitter:description" content="Sachez quelle pharmacie a votre médicament et laquelle est de garde à Lomé, avant de vous déplacer. Appli gratuite sur iPhone et Android.">
 <meta name="twitter:image" content="https://www.novimedtg.com/og-image.jpg">
 <meta name="apple-itunes-app" content="app-id=6811675793">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://www.novimedtg.com/#organization", "name": "NoviMed", "url": "https://www.novimedtg.com/", "logo": {"@type": "ImageObject", "url": "https://www.novimedtg.com/icon-512.png", "width": 512, "height": 512}, "email": "contacts@novimedtg.com", "contactPoint": [{"@type": "ContactPoint", "contactType": "customer support", "email": "support@novimedtg.com", "areaServed": "TG", "availableLanguage": "French"}], "address": {"@type": "PostalAddress", "streetAddress": "Agbalépédo", "addressLocality": "Lomé", "addressCountry": "TG"}, "parentOrganization": {"@type": "Organization", "name": "SAGE EMPIRE SARL"}, "sameAs": ["https://apps.apple.com/app/id6811675793", "https://play.google.com/store/apps/details?id=com.novimed.app"]}, {"@type": "WebSite", "@id": "https://www.novimedtg.com/#website", "url": "https://www.novimedtg.com/", "name": "NoviMed", "inLanguage": "fr", "publisher": {"@id": "https://www.novimedtg.com/#organization"}}, {"@type": "MobileApplication", "@id": "https://www.novimedtg.com/#app", "name": "NoviMed", "operatingSystem": "iOS, Android", "applicationCategory": "MedicalApplication", "inLanguage": "fr", "description": "NoviMed vous indique quelle pharmacie de Lomé a votre médicament et lesquelles sont de garde. Réservez en un geste. Appli gratuite sur iPhone et Android.", "image": "https://www.novimedtg.com/icon-512.png", "screenshot": "https://www.novimedtg.com/og-image.jpg", "downloadUrl": ["https://apps.apple.com/app/id6811675793", "https://play.google.com/store/apps/details?id=com.novimed.app"], "offers": {"@type": "Offer", "price": "0", "priceCurrency": "XOF"}, "areaServed": {"@type": "City", "name": "Lomé"}, "publisher": {"@id": "https://www.novimedtg.com/#organization"}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://www.novimedtg.com/#organization", "name": "NoviMed", "url": "https://www.novimedtg.com/", "logo": {"@type": "ImageObject", "url": "https://www.novimedtg.com/icon-512.png", "width": 512, "height": 512}, "email": "contacts@novimedtg.com", "contactPoint": [{"@type": "ContactPoint", "contactType": "customer support", "email": "support@novimedtg.com", "areaServed": "TG", "availableLanguage": "French"}], "address": {"@type": "PostalAddress", "streetAddress": "Agbalépédo", "addressLocality": "Lomé", "addressCountry": "TG"}, "parentOrganization": {"@type": "Organization", "name": "SAGE EMPIRE SARL"}, "sameAs": ["https://apps.apple.com/app/id6811675793", "https://play.google.com/store/apps/details?id=com.novimed.app"]}, {"@type": "WebSite", "@id": "https://www.novimedtg.com/#website", "url": "https://www.novimedtg.com/", "name": "NoviMed", "inLanguage": "fr", "publisher": {"@id": "https://www.novimedtg.com/#organization"}}, {"@type": "MobileApplication", "@id": "https://www.novimedtg.com/#app", "name": "NoviMed", "operatingSystem": "iOS, Android", "applicationCategory": "MedicalApplication", "inLanguage": "fr", "description": "NoviMed vous indique quelle pharmacie de Lomé a votre médicament et lesquelles sont de garde. Réservez en un geste. Appli gratuite sur iPhone et Android.", "image": "https://www.novimedtg.com/icon-512.png", "screenshot": "https://www.novimedtg.com/app/app-recherche.webp", "downloadUrl": ["https://apps.apple.com/app/id6811675793", "https://play.google.com/store/apps/details?id=com.novimed.app"], "offers": {"@type": "Offer", "price": "0", "priceCurrency": "XOF"}, "areaServed": {"@type": "City", "name": "Lomé"}, "publisher": {"@id": "https://www.novimedtg.com/#organization"}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@600&display=swap" rel="stylesheet">
@@ -151,12 +151,13 @@ p{text-wrap:pretty}
 .fcard{position:absolute;z-index:3;width:206px;display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:12px 16px 12px 12px;box-shadow:var(--sh);border:1px solid rgba(225,232,242,.8);font-size:.86rem;line-height:1.3;white-space:nowrap}
 .fcard strong{display:block;font-family:var(--f-display);font-size:.9rem;font-weight:700}
 .fcard small{color:var(--muted);font-weight:500}
-.fcard-garde{right:min(calc(50% + var(--pw)/2 - 44px),calc(100% - 206px));top:41%;animation:float 7s ease-in-out infinite -2s}
-.fcard-resa{left:min(calc(50% + var(--pw)/2 - 44px),calc(100% - 206px));top:75%;animation:float 7s ease-in-out infinite -5s}
-/* Garde-fou : la carte de garde peut mordre de 44px sur l'espace entre colonnes, celle de réservation seulement sur la marge réelle de la page */
+.fcard-garde{right:min(calc(50% + var(--pw)/2 - 22px),calc(100% - 206px));top:-44px;animation:float 7s ease-in-out infinite -2s}
+.fcard-resa{left:min(calc(50% + var(--pw)/2 - 22px),calc(100% - 206px));top:auto;bottom:-6px;animation:float 7s ease-in-out infinite -5s}
+/* Cartes posées sur la barre d'état (haut) et la barre d'onglets (bas) de la capture : elles ne cachent aucun contenu.
+   Garde-fou : la carte de garde peut mordre de 22px sur l'espace entre colonnes, celle de réservation seulement sur la marge réelle de la page */
 @media (min-width:901px){
-  .fcard-garde{right:min(calc(50% + var(--pw)/2 - 44px),calc(100% - 162px))}
-  .fcard-resa{left:min(calc(50% + var(--pw)/2 - 44px),calc(100% - 206px + max(0px,(100vw - 1180px)/2)))}
+  .fcard-garde{right:min(calc(50% + var(--pw)/2 - 22px),calc(100% - 162px))}
+  .fcard-resa{left:min(calc(50% + var(--pw)/2 - 22px),calc(100% - 206px + max(0px,(100vw - 1180px)/2)))}
 }
 .ic-round{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none}
 .ic-round svg{width:20px;height:20px}
@@ -170,109 +171,12 @@ p{text-wrap:pretty}
 @keyframes halo{0%{opacity:.7;transform:scale(.9)}100%{opacity:0;transform:scale(1.35)}}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 
-/* ---------- Téléphones ---------- */
-.phone{position:relative;z-index:2;width:var(--pw);max-width:100%;aspect-ratio:300/620;background:var(--navy);border-radius:50px;padding:10px;box-shadow:inset 0 0 0 2px #2a3d61,inset 0 0 0 4px #0b1a33,var(--sh-phone);flex:none}
+/* ---------- Téléphones : vraies captures de l'appli (même cadre sur toutes les pages) ---------- */
+.phone{position:relative;z-index:2;width:var(--pw);max-width:100%;background:var(--navy);border-radius:50px;padding:10px;box-shadow:inset 0 0 0 2px #2a3d61,inset 0 0 0 4px #0b1a33,var(--sh-phone);flex:none}
 .phone::before{content:"";position:absolute;right:-3px;top:120px;width:3px;height:64px;border-radius:0 3px 3px 0;background:#1d3156}
 .phone.float{animation:float 8s ease-in-out infinite}
-.screen{position:relative;height:100%;border-radius:40px;background:#f5f8fc;overflow:hidden;display:flex;flex-direction:column;font-size:12px;line-height:1.35;color:var(--ink)}
-.island{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:84px;height:24px;border-radius:20px;background:var(--navy);z-index:5}
-.sb{display:flex;align-items:center;justify-content:space-between;height:44px;padding:4px 24px 0 28px;font-weight:700;font-size:12.5px;flex:none}
-.sb-ic{display:flex;gap:5px;align-items:center}
-.sb-ic svg{height:11px;width:auto;fill:var(--ink)}
-.app-head{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;padding:6px 16px 0}
-.app-head small{display:block;color:var(--muted);font-size:11px;font-weight:500}
-.app-head b{font-family:var(--f-display);font-size:16px;font-weight:700;letter-spacing:-.02em}
-.pill-loc{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:700;color:var(--blue);background:var(--blue-50);padding:5px 9px 5px 7px;border-radius:999px;white-space:nowrap}
-.pill-loc svg{width:11px;height:11px}
-.searchbar{display:flex;align-items:center;gap:8px;margin:12px 14px 0;height:42px;padding:0 12px;background:#fff;border:1.5px solid var(--blue);border-radius:14px;box-shadow:0 0 0 4px rgba(0,86,179,.09);font-weight:600;font-size:12.5px}
-.searchbar svg{width:15px;height:15px;color:var(--blue);flex:none}
-.caret{width:1.5px;height:15px;background:var(--blue);margin-left:-5px;animation:blink 1.1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-.chips{display:flex;gap:6px;padding:10px 14px 0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent)}
-.chip{flex:none;font-size:10.5px;font-weight:700;padding:5px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--muted)}
-.chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
-.res-meta{padding:12px 16px 7px;font-size:10.5px;color:var(--muted);font-weight:600}
-.ph-list{list-style:none;display:flex;flex-direction:column;gap:7px;padding:0 10px}
-.ph{display:flex;gap:10px;align-items:center;background:#fff;border-radius:14px;padding:9px 10px;box-shadow:0 1px 2px rgba(15,31,56,.06),0 4px 10px -6px rgba(15,31,56,.12)}
-.ph-logo{width:32px;height:32px;border-radius:10px;background:var(--green-50);display:grid;place-items:center;flex:none}
-.ph-logo svg{width:15px;height:15px;fill:var(--green)}
-.ph-main{flex:1;min-width:0}
-.ph-row{display:flex;align-items:center;justify-content:space-between;gap:6px}
-.ph-row b{font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dist{font-size:11px;font-weight:700;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
-.ph-tags{display:flex;align-items:center;gap:5px;margin-top:4px;font-size:10px;color:var(--muted);white-space:nowrap}
-.ok{display:inline-flex;align-items:center;gap:4px;font-size:9.5px;font-weight:800;color:var(--green-800);background:var(--green-100);padding:2px 7px 2px 6px;border-radius:999px}
-.ok::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--green)}
-.out{font-size:9.5px;font-weight:800;color:#9a3412;background:#ffedd5;padding:2px 7px;border-radius:999px}
-.notify{display:inline-flex;align-items:center;gap:3px;font-size:9.5px;font-weight:800;color:#fff;background:var(--blue);padding:2px 7px 2px 5px;border-radius:999px}
-.notify svg{width:8px;height:8px}
-.ph.is-out .ph-logo{background:var(--soft)}
-.ph.is-out .ph-logo svg{fill:#9aa7bb}
-.garde-tag{font-size:9.5px;font-weight:800;color:#fff;background:var(--navy);padding:2px 7px;border-radius:999px}
-.tabbar{margin-top:auto;display:flex;justify-content:space-around;align-items:center;height:62px;padding-bottom:10px;background:#fff;border-top:1px solid var(--line);flex:none}
-.tabbar span{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:9px;font-weight:700;color:#8a96aa}
-.tabbar span.on{color:var(--blue)}
-.tabbar svg{width:18px;height:18px}
-.hero-visual .ph{animation:slidein .7s var(--ease) both;animation-delay:calc(.35s + var(--i)*.13s)}
-@keyframes slidein{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-
-/* Écran réservation */
-.app-bar{display:flex;align-items:center;gap:10px;padding:4px 14px 6px;font-family:var(--f-display);font-weight:700;font-size:14px}
-.app-bar .back{width:30px;height:30px;border-radius:10px;background:#fff;display:grid;place-items:center;box-shadow:0 1px 2px rgba(15,31,56,.08)}
-.app-bar svg{width:15px;height:15px}
-.resa-body{display:flex;flex-direction:column;gap:9px;padding:6px 12px 0}
-.confirm{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;background:var(--green-50);border:1px solid var(--green-100)}
-.confirm .ck{width:30px;height:30px;border-radius:50%;background:var(--green);display:grid;place-items:center;flex:none}
-.confirm .ck svg{width:15px;height:15px;color:#fff}
-.confirm b{display:block;font-size:12.5px;color:var(--green-800)}
-.confirm small{font-size:10.5px;color:var(--muted)}
-.code-card{background:#fff;border-radius:16px;padding:12px 14px;text-align:center;box-shadow:0 1px 2px rgba(15,31,56,.06),0 8px 18px -12px rgba(15,31,56,.25)}
-.code-card small{font-size:9.5px;font-weight:800;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
-.code{font-family:var(--f-mono);font-weight:600;font-size:25px;letter-spacing:.16em;color:var(--blue);margin:6px 0 4px;padding:6px 0;border:1.5px dashed var(--blue-100);border-radius:10px;background:var(--blue-50)}
-.code-card p{font-size:10.5px;color:var(--muted)}
-.timer{display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:10px 12px;box-shadow:0 1px 2px rgba(15,31,56,.06),0 8px 18px -12px rgba(15,31,56,.25)}
-.ring{position:relative;width:58px;height:58px;flex:none}
-.ring svg{width:58px;height:58px;transform:rotate(-90deg)}
-.ring circle{fill:none;stroke-width:6}
-.ring .bg{stroke:var(--green-100)}
-.ring .fg{stroke:var(--green);stroke-linecap:round;stroke-dasharray:150.8;stroke-dashoffset:0;transition:stroke-dashoffset 1s linear}
-.ring span{position:absolute;inset:0;display:grid;place-items:center;font-weight:800;font-size:12px;font-variant-numeric:tabular-nums}
-.timer b{display:block;font-size:12px}
-.timer small{font-size:10.5px;color:var(--muted)}
-.med{display:flex;align-items:center;gap:10px;background:#fff;border-radius:14px;padding:9px 12px;box-shadow:0 1px 2px rgba(15,31,56,.06)}
-.med .pill-ic{width:30px;height:30px;border-radius:9px;background:var(--blue-50);display:grid;place-items:center;flex:none}
-.med .pill-ic svg{width:15px;height:15px;color:var(--blue)}
-.med div{flex:1;min-width:0}
-.med b{display:block;font-size:11.5px}
-.med small{font-size:10px;color:var(--muted)}
-.mini-map{position:relative;height:74px;border-radius:14px;overflow:hidden;background-color:#e9f0f8;background-image:linear-gradient(#dfe8f3 1px,transparent 1px),linear-gradient(90deg,#dfe8f3 1px,transparent 1px);background-size:18px 18px}
-.mini-map svg{position:absolute;inset:0;width:100%;height:100%}
-.mini-map span{position:absolute;left:10px;bottom:8px;font-size:10px;font-weight:800;background:#fff;padding:3px 8px;border-radius:999px;box-shadow:0 1px 2px rgba(15,31,56,.12)}
-.phone-btns{display:flex;gap:8px;padding:12px 12px 18px;margin-top:auto}
-.phone-btns span{flex:1;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:700;font-size:11.5px}
-.phone-btns .p{background:var(--blue);color:#fff}
-.phone-btns .s{background:#fff;color:var(--blue);border:1.5px solid var(--blue-100)}
-
-/* Écran ordonnances */
-.vault-bg{display:flex;flex-direction:column;gap:8px;padding:8px 12px;filter:blur(3.5px);opacity:.55}
-.vault-bg div{height:64px;border-radius:14px;background:#fff;box-shadow:0 1px 2px rgba(15,31,56,.08);display:flex;align-items:center;gap:10px;padding:0 12px}
-.vault-bg i{width:34px;height:40px;border-radius:6px;background:var(--blue-50);flex:none}
-.vault-bg em{display:block;height:8px;border-radius:4px;background:#dbe3ee;width:70%}
-.vault-bg em+em{width:45%;margin-top:6px}
-.vault{position:absolute;inset:44px 0 0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px 18px 20px;background:linear-gradient(180deg,rgba(245,248,252,.35),rgba(245,248,252,.92) 38%)}
-.shield{width:46px;height:46px;border-radius:14px;background:var(--blue);display:grid;place-items:center;box-shadow:0 10px 20px -10px rgba(0,86,179,.8)}
-.shield svg{width:22px;height:22px;color:#fff}
-.vault h4{font-size:15.5px;font-weight:700;margin-top:14px;line-height:1.25}
-.vault p{font-size:11px;color:var(--muted);margin-top:6px;max-width:26ch}
-.fp{position:relative;width:96px;height:96px;margin-top:22px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 10px 26px -12px rgba(0,86,179,.45)}
-.fp svg{width:50px;height:50px;color:var(--blue)}
-.fp::before{content:"";position:absolute;inset:-8px;border-radius:50%;border:2px solid var(--blue-100);animation:halo 2.6s ease-out infinite}
-.fp::after{content:"";position:absolute;left:22px;right:22px;height:2px;top:24px;border-radius:2px;background:linear-gradient(90deg,transparent,var(--green-500),transparent);animation:scan 2.6s ease-in-out infinite}
-@keyframes scan{0%,100%{transform:translateY(0);opacity:0}15%,85%{opacity:1}50%{transform:translateY(46px)}}
-.fp-label{font-size:10.5px;font-weight:700;color:var(--blue);margin-top:12px}
-.alt-auth{display:flex;gap:8px;margin-top:28px;width:100%}
-.alt-auth span{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;height:38px;border-radius:12px;background:#fff;border:1px solid var(--line);font-weight:700;font-size:10.5px;color:var(--ink)}
-.alt-auth svg{width:14px;height:14px;color:var(--blue)}
+.screen{position:relative;aspect-ratio:390/844;border-radius:40px;background:#ebf4f0;overflow:hidden;transform:translateZ(0)}
+.screen img{display:block;width:100%;height:100%;max-width:none;object-fit:cover}
 
 /* ---------- Étapes ---------- */
 .steps-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:64px;align-items:center}
@@ -474,7 +378,6 @@ html.js .reveal.is-visible{opacity:1;transform:none}
   .cta-band{padding:32px 22px}
   .cta-band .stores{grid-template-columns:minmax(0,1fr)}
   .cta-band .store{padding:9px 16px}
-  .mini-map{display:none}
   .foot-grid{grid-template-columns:minmax(0,1fr)}
   .fcard{width:184px}
   .premium-card{padding:26px 20px}
@@ -577,30 +480,8 @@ html.js .reveal.is-visible{opacity:1;transform:none}
 
       <div class="hero-visual hero-in" style="--d:2">
         <div class="halo" aria-hidden="true"></div>
-        <div class="phone float" role="img" aria-label="Écran de recherche NoviMed : le paracétamol est disponible dans trois pharmacies de Lomé, classées par distance, dont une de garde. Une quatrième est en rupture, avec l'option Me prévenir.">
-          <div class="screen">
-            <span class="island"></span>
-            <div class="sb"><span>9:41</span><span class="sb-ic"><svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".35"/></svg><svg viewBox="0 0 26 12"><rect x=".5" y=".5" width="22" height="11" rx="3" fill="none" stroke="#0f1f38" opacity=".4"/><rect x="2" y="2" width="16" height="8" rx="2"/><rect x="24" y="4" width="2" height="4" rx="1" opacity=".4"/></svg></span></div>
-            <div class="app-head">
-              <div><small>Bonjour</small><b>Trouver un médicament</b></div>
-              <span class="pill-loc"><svg><use href="#i-pin"/></svg>Lomé</span>
-            </div>
-            <div class="searchbar"><svg><use href="#i-search"/></svg>Paracétamol 500 mg<span class="caret"></span></div>
-            <div class="chips"><span class="chip on">Les plus proches</span><span class="chip">De garde</span><span class="chip">Ouvertes</span></div>
-            <p class="res-meta">3 pharmacies l'ont en stock</p>
-            <ul class="ph-list">
-              <li class="ph" style="--i:0"><span class="ph-logo"><svg><use href="#i-cross"/></svg></span><div class="ph-main"><div class="ph-row"><b>Pharmacie du Centre</b><span class="dist">450 m</span></div><div class="ph-tags"><span class="ok">Disponible</span>Ouverte</div></div></li>
-              <li class="ph" style="--i:1"><span class="ph-logo"><svg><use href="#i-cross"/></svg></span><div class="ph-main"><div class="ph-row"><b>Pharmacie de la Paix</b><span class="dist">1,2 km</span></div><div class="ph-tags"><span class="ok">Disponible</span><span class="garde-tag">De garde</span></div></div></li>
-              <li class="ph" style="--i:2"><span class="ph-logo"><svg><use href="#i-cross"/></svg></span><div class="ph-main"><div class="ph-row"><b>Pharmacie Espoir</b><span class="dist">2,8 km</span></div><div class="ph-tags"><span class="ok">Disponible</span>Ouverte</div></div></li>
-              <li class="ph is-out" style="--i:3"><span class="ph-logo"><svg><use href="#i-cross"/></svg></span><div class="ph-main"><div class="ph-row"><b>Pharmacie Lumière</b><span class="dist">3,4 km</span></div><div class="ph-tags"><span class="out">Rupture</span><span class="notify"><svg aria-hidden="true"><use href="#i-sparkle"/></svg>Me prévenir</span></div></div></li>
-            </ul>
-            <div class="tabbar">
-              <span class="on"><svg><use href="#i-search"/></svg>Chercher</span>
-              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>Garde</span>
-              <span><svg><use href="#i-clock"/></svg>Réservations</span>
-              <span><svg><use href="#i-lock"/></svg>Ordonnances</span>
-            </div>
-          </div>
+        <div class="phone float">
+          <div class="screen"><img src="/app/app-recherche.webp" width="390" height="844" alt="Capture de l'appli NoviMed, onglet Rechercher : le Paracétamol 500 mg est disponible à la Pharmacie du Centre (0,5 km) et à la Pharmacie de la Paix, de garde (1,2 km), avec les boutons Réserver, Appeler et Itinéraire." fetchpriority="high" decoding="async"></div>
         </div>
         <div class="fcard fcard-garde" aria-hidden="true">
           <span class="garde-cross"><svg><use href="#i-cross"/></svg></span>
@@ -647,23 +528,8 @@ html.js .reveal.is-visible{opacity:1;transform:none}
         </ol>
       </div>
       <div class="steps-visual reveal" style="--d:1">
-        <div class="phone float" style="animation-delay:-3s" role="img" aria-label="Écran de réservation NoviMed : réservation confirmée, code de retrait K7M3XQ, minuteur de 45 minutes.">
-          <div class="screen">
-            <span class="island"></span>
-            <div class="sb"><span>9:43</span><span class="sb-ic"><svg viewBox="0 0 26 12"><rect x=".5" y=".5" width="22" height="11" rx="3" fill="none" stroke="#0f1f38" opacity=".4"/><rect x="2" y="2" width="16" height="8" rx="2"/><rect x="24" y="4" width="2" height="4" rx="1" opacity=".4"/></svg></span></div>
-            <div class="app-bar"><span class="back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></span>Ma réservation</div>
-            <div class="resa-body">
-              <div class="confirm"><span class="ck"><svg><use href="#i-check"/></svg></span><div><b>Réservation confirmée</b><small>Pharmacie du Centre · 450 m</small></div></div>
-              <div class="code-card"><small>Code de retrait</small><div class="code">K7M3XQ</div><p>Présentez ce code au comptoir</p></div>
-              <div class="timer">
-                <div class="ring"><svg viewBox="0 0 58 58"><circle class="bg" cx="29" cy="29" r="24"/><circle class="fg" id="timerRing" cx="29" cy="29" r="24"/></svg><span id="timerTxt">45:00</span></div>
-                <div><b>Gardé pour vous</b><small>La pharmacie garde votre médicament 45 minutes.</small></div>
-              </div>
-              <div class="med"><span class="pill-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5a5 5 0 0 1-7-7l6-6a5 5 0 0 1 7 7z"/><path d="M8.5 8.5l7 7"/></svg></span><div><b>Amoxicilline 500 mg</b><small>1 boîte · paiement au comptoir</small></div></div>
-              <div class="mini-map"><svg viewBox="0 0 240 74" preserveAspectRatio="none"><path d="M-5 60 C40 60 50 30 90 34 S150 52 175 30 210 20 250 16" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round"/><path d="M24 58 C50 56 60 36 90 37 S150 50 172 32" fill="none" stroke="#0056b3" stroke-width="3" stroke-dasharray="1 6" stroke-linecap="round"/><circle cx="24" cy="58" r="5" fill="#0056b3" stroke="#fff" stroke-width="2.5"/><circle cx="172" cy="32" r="9" fill="#16a34a" stroke="#fff" stroke-width="2.5"/><path d="M170.2 27.5h3.6v2.7h2.7v3.6h-2.7v2.7h-3.6v-2.7h-2.7v-3.6h2.7z" fill="#fff"/></svg><span>6 min à pied</span></div>
-            </div>
-            <div class="phone-btns"><span class="p">Itinéraire</span><span class="s">Appeler</span></div>
-          </div>
+        <div class="phone float" style="animation-delay:-3s">
+          <div class="screen"><img src="/app/app-reservation.webp" width="390" height="844" alt="Capture de l'appli NoviMed, écran Mes réservations : Paracétamol 500 mg réservé à la Pharmacie du Centre, code à présenter K7M3XQ, valable 45 minutes." loading="lazy" decoding="async"></div>
         </div>
       </div>
     </div>
@@ -746,27 +612,8 @@ html.js .reveal.is-visible{opacity:1;transform:none}
           </div>
         </div>
         <div class="premium-visual">
-          <div class="phone float" style="animation-delay:-5s" role="img" aria-label="Écran NoviMed : vos ordonnances sont protégées et s'ouvrent avec votre empreinte, votre visage ou le code du téléphone.">
-            <div class="screen">
-              <span class="island"></span>
-              <div class="sb"><span>9:45</span><span class="sb-ic"><svg viewBox="0 0 26 12"><rect x=".5" y=".5" width="22" height="11" rx="3" fill="none" stroke="#0f1f38" opacity=".4"/><rect x="2" y="2" width="16" height="8" rx="2"/><rect x="24" y="4" width="2" height="4" rx="1" opacity=".4"/></svg></span></div>
-              <div class="vault-bg" aria-hidden="true">
-                <div><i></i><span style="flex:1"><em></em><em></em></span></div>
-                <div><i></i><span style="flex:1"><em></em><em></em></span></div>
-                <div><i></i><span style="flex:1"><em></em><em></em></span></div>
-                <div><i></i><span style="flex:1"><em></em><em></em></span></div>
-                <div><i></i><span style="flex:1"><em></em><em></em></span></div>
-                <div><i></i><span style="flex:1"><em></em><em></em></span></div>
-              </div>
-              <div class="vault">
-                <span class="shield"><svg><use href="#i-lock"/></svg></span>
-                <h4>Vos ordonnances sont protégées</h4>
-                <p>Déverrouillez avec votre empreinte, votre visage ou le code du téléphone.</p>
-                <span class="fp"><svg><use href="#i-fp"/></svg></span>
-                <span class="fp-label">Touchez le capteur</span>
-                <div class="alt-auth"><span><svg><use href="#i-face"/></svg>Visage</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M7.5 12h.01M12 12h.01M16.5 12h.01"/></svg>Code</span></div>
-              </div>
-            </div>
+          <div class="phone float" style="animation-delay:-5s">
+            <div class="screen"><img src="/app/app-ordonnances.webp" width="390" height="844" alt="Capture de l'appli NoviMed : « Vos ordonnances sont protégées », bouton Déverrouiller avec l'empreinte, le visage ou le code du téléphone." loading="lazy" decoding="async"></div>
           </div>
         </div>
       </div>
@@ -950,20 +797,6 @@ html.js .reveal.is-visible{opacity:1;transform:none}
       });
     }, { threshold: 0.6 });
     counters.forEach(function (el) { ioc.observe(el); });
-  }
-
-  // Minuteur de réservation (45 min)
-  var txt = d.getElementById('timerTxt');
-  var ring = d.getElementById('timerRing');
-  var total = 45 * 60, left = total, C = 2 * Math.PI * 24;
-  var render = function () {
-    var m = Math.floor(left / 60), s = left % 60;
-    txt.textContent = m + ':' + (s < 10 ? '0' : '') + s;
-    ring.style.strokeDashoffset = (C * (1 - left / total)).toFixed(2);
-  };
-  render();
-  if (!reduce) {
-    setInterval(function () { left = left > 0 ? left - 1 : total; render(); }, 1000);
   }
 })();
 </script>

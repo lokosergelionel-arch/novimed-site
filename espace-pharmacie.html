@@ -253,53 +253,14 @@ html.js .reveal.is-visible{opacity:1;transform:none}
 .price-pill{display:inline-flex;align-items:center;gap:12px;margin-top:22px;padding:8px 14px 8px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);font-size:.9rem;font-weight:600;color:var(--navy-text)}
 .price-pill b{color:#fff;font-family:var(--f-display);white-space:nowrap}
 .price-pill .live-dot{margin-left:2px}
-/* Maquette tableau de bord */
+/* Capture réelle du tableau de bord, dans un cadre de navigateur */
 .dash-wrap{position:relative;display:flex;justify-content:center;min-width:0}
 .dash-wrap::before{content:"";position:absolute;width:90%;aspect-ratio:1;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(34,197,94,.2),transparent);pointer-events:none}
-.dash{position:relative;z-index:1;width:100%;max-width:500px;background:#fff;color:var(--ink);border-radius:22px;box-shadow:0 40px 80px -30px rgba(0,0,0,.65);overflow:hidden;font-size:13px;line-height:1.35;animation:float 9s ease-in-out infinite}
-.dash-bar{display:flex;align-items:center;gap:6px;padding:11px 14px;background:var(--soft);border-bottom:1px solid var(--line)}
+.dash{position:relative;z-index:1;width:100%;max-width:640px;margin:0;background:#fff;border-radius:16px;box-shadow:0 40px 80px -30px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.08);overflow:hidden;animation:float 9s ease-in-out infinite}
+.dash-bar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:var(--soft);border-bottom:1px solid var(--line)}
 .dash-bar i{width:10px;height:10px;border-radius:50%;background:#d4dce8;flex:none}
 .dash-bar span{margin-left:8px;min-width:0;font:600 11.5px/1 var(--f-mono);color:var(--muted);background:#fff;border:1px solid var(--line);padding:6px 10px;border-radius:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dash-body{display:grid;gap:12px;padding:16px}
-.dash-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.dash-top small{display:block;color:var(--muted);font-size:11px;font-weight:600}
-.dash-top b{font-family:var(--f-display);font-size:15.5px;letter-spacing:-.02em;white-space:nowrap}
-.switch{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;color:var(--green-800);background:var(--green-50);border:1px solid var(--green-100);padding:5px 10px 5px 5px;border-radius:999px;white-space:nowrap}
-.switch em{position:relative;width:30px;height:18px;border-radius:999px;background:var(--green);flex:none}
-.switch em::after{content:"";position:absolute;top:2px;right:2px;width:14px;height:14px;border-radius:50%;background:#fff}
-.dash-resa{border:1.5px solid var(--blue-100);border-radius:16px;padding:14px;background:linear-gradient(180deg,#f7faff,#fff)}
-.dr-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.new{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;color:#fff;background:var(--blue);padding:4px 10px 4px 8px;border-radius:999px}
-.new::before{content:"";width:6px;height:6px;border-radius:50%;background:#fff;animation:blinkdot 1.6s ease-in-out infinite}
-@keyframes blinkdot{50%{opacity:.25}}
-.dr-head .t{font-size:11px;color:var(--muted);font-weight:600;white-space:nowrap}
-.dr-main{display:flex;align-items:center;gap:14px;margin-top:12px}
-.ring{position:relative;width:58px;height:58px;flex:none}
-.ring svg{width:58px;height:58px;transform:rotate(-90deg)}
-.ring circle{fill:none;stroke-width:6}
-.ring .bg{stroke:var(--green-100)}
-.ring .fg{stroke:var(--green);stroke-linecap:round;stroke-dasharray:150.8;stroke-dashoffset:0;transition:stroke-dashoffset 1s linear}
-.ring span{position:absolute;inset:0;display:grid;place-items:center;font-weight:800;font-size:12px;font-variant-numeric:tabular-nums}
-.dr-info{min-width:0;flex:1}
-.dr-info small{font-size:9.5px;font-weight:800;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
-.code{display:inline-block;font-family:var(--f-mono);font-weight:600;font-size:21px;letter-spacing:.16em;color:var(--blue);margin-top:4px;padding:3px 10px;border:1.5px dashed var(--blue-100);border-radius:9px;background:var(--blue-50)}
-.dr-info p{font-size:11.5px;color:var(--muted);margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dr-ord{display:flex;align-items:center;gap:10px;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);font-weight:700;font-size:12px}
-.doc-ic{width:28px;height:28px;border-radius:8px;background:var(--blue-50);color:var(--blue);display:grid;place-items:center;flex:none}
-.doc-ic svg{width:15px;height:15px}
-.dr-btns{margin-left:auto;display:flex;gap:6px}
-.dr-btns span{padding:7px 11px;border-radius:9px;font-size:11px;font-weight:800;white-space:nowrap}
-.dr-btns .v{background:var(--green-700);color:#fff}
-.dr-btns .r{background:#fff;color:#b42318;border:1.5px solid #f3c7c2}
-.dash-stats{border:1px solid var(--line);border-radius:16px;padding:13px 14px}
-.ds-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
-.ds-head b{font-size:12.5px}
-.ds-head small{font-size:11px;color:var(--muted);font-weight:600;white-space:nowrap}
-.bars{list-style:none;display:grid;gap:8px;margin-top:10px}
-.bars li{display:grid;grid-template-columns:88px minmax(0,1fr);align-items:center;gap:10px;font-size:11.5px;font-weight:600;color:var(--muted)}
-.bars i{display:block;height:8px;border-radius:6px;background:linear-gradient(90deg,var(--blue),#4f95e0);width:var(--w);transform-origin:left;animation:grow 1.2s var(--ease) both;animation-delay:calc(.6s + var(--i)*.15s)}
-.bars li.miss i{background:linear-gradient(90deg,var(--amber),#f7c25e)}
-@keyframes grow{from{transform:scaleX(0)}to{transform:none}}
+.dash img{display:block;width:100%;height:auto}
 /* Avantages */
 .pros-cards .feat-ic{background:var(--green-50);color:var(--green-700)}
 /* Parcours de réservation */
@@ -351,19 +312,7 @@ html.js .reveal.is-visible{opacity:1;transform:none}
   .hero-btns .btn{width:100%}
   .price-pill{border-radius:16px;align-items:flex-start;line-height:1.4}
   .price-pill .live-dot{margin-top:6px}
-  .dash-body{padding:12px;gap:10px}
-  .dash-resa{padding:12px}
-  .dr-main{gap:10px}
-  .code{font-size:18px;letter-spacing:.12em;padding:3px 8px}
-  .dr-ord{flex-wrap:wrap}
-  .dr-btns{margin-left:0;width:100%}
-  .dr-btns span{flex:1;text-align:center}
-  .bars li{grid-template-columns:80px minmax(0,1fr)}
-  .switch{font-size:10.5px}
   .offer{padding:28px 20px}
-}
-@media (max-width:370px){
-  .dash-top{flex-wrap:wrap}
 }
 
 @media (max-width:1080px){
@@ -487,28 +436,10 @@ html.js .reveal.is-visible{opacity:1;transform:none}
           <p class="price-pill hero-in" style="--d:4"><span class="live-dot" aria-hidden="true"></span><span>Abonnement unique, tout inclus : <b>24&nbsp;000&nbsp;F / an</b></span></p>
         </div>
         <div class="dash-wrap hero-in" style="--d:2">
-          <div class="dash" role="img" aria-label="Exemple d'écran de l'Espace Pharmacie : une nouvelle réservation avec le code de retrait K7M3XQ et un minuteur de 45 minutes, une ordonnance jointe à valider ou refuser, la garde de ce soir activée et les médicaments les plus recherchés à 5 km.">
-            <div class="dash-bar"><i></i><i></i><i></i><span>pharmacie.novimedtg.com</span></div>
-            <div class="dash-body">
-              <div class="dash-top"><div><small>Espace Pharmacie</small><b>Pharmacie du Centre</b></div><span class="switch"><em></em>De garde ce soir</span></div>
-              <div class="dash-resa">
-                <div class="dr-head"><span class="new">Nouvelle réservation</span><span class="t">il y a 1 min</span></div>
-                <div class="dr-main">
-                  <div class="ring"><svg viewBox="0 0 58 58"><circle class="bg" cx="29" cy="29" r="24"/><circle class="fg" id="timerRing" cx="29" cy="29" r="24"/></svg><span id="timerTxt">45:00</span></div>
-                  <div class="dr-info"><small>Code de retrait</small><br><span class="code">K7M3XQ</span><p>Amoxicilline 500 mg · 1 boîte</p></div>
-                </div>
-                <div class="dr-ord"><span class="doc-ic"><svg><use href="#i-doc"/></svg></span><span>Ordonnance jointe</span><span class="dr-btns"><span class="v">Valider</span><span class="r">Refuser</span></span></div>
-              </div>
-              <div class="dash-stats">
-                <div class="ds-head"><b>Recherches à 5 km</b><small>Cette semaine</small></div>
-                <ul class="bars">
-                  <li style="--i:0"><span>Paracétamol</span><i style="--w:92%"></i></li>
-                  <li style="--i:1"><span>Amoxicilline</span><i style="--w:66%"></i></li>
-                  <li class="miss" style="--i:2"><span>Métformine</span><i style="--w:41%"></i></li>
-                </ul>
-              </div>
-            </div>
-          </div>
+          <figure class="dash">
+            <div class="dash-bar" aria-hidden="true"><i></i><i></i><i></i><span>pharmacie.novimedtg.com</span></div>
+            <img src="/app/espace-pharmacie-dashboard.webp" width="1440" height="1000" alt="Capture du vrai tableau de bord de l'Espace Pharmacie NoviMed : statut de garde activé, une ordonnance à valider, réservations en cours avec code de retrait K7M3XQ et minuteur de 45 minutes, médicaments les plus recherchés autour de l'officine et alertes de stock." fetchpriority="high" decoding="async">
+          </figure>
         </div>
       </div>
     </div>
@@ -701,19 +632,6 @@ html.js .reveal.is-visible{opacity:1;transform:none}
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
     items.forEach(function (el) { io.observe(el); });
-  }
-  // Minuteur de réservation (45 min), si présent
-  var txt = d.getElementById('timerTxt');
-  var ring = d.getElementById('timerRing');
-  if (txt && ring) {
-    var total = 45 * 60, left = total, C = 2 * Math.PI * 24;
-    var render = function () {
-      var m = Math.floor(left / 60), s = left % 60;
-      txt.textContent = m + ':' + (s < 10 ? '0' : '') + s;
-      ring.style.strokeDashoffset = (C * (1 - left / total)).toFixed(2);
-    };
-    render();
-    if (!reduce) setInterval(function () { left = left > 0 ? left - 1 : total; render(); }, 1000);
   }
 })();
 </script>
