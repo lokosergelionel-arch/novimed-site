@@ -90,6 +90,19 @@ input[type=tel]{width:100%;min-height:54px;padding:13px 16px;border:2px solid #7
 input[type=tel]::placeholder{color:#6b778b;font-weight:500}
 input[type=tel]:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,86,179,.12)}
 .aide{font-size:.84rem;color:var(--muted);margin-top:8px}
+.etape-titre{display:flex;align-items:center;gap:10px;margin:26px 0 2px;font-size:1rem;font-weight:800;color:var(--ink)}
+.etape-titre .num{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-size:.82rem;display:grid;place-items:center}
+.etape-sous{font-size:.84rem;color:var(--muted);margin:0 0 4px 36px}
+.statut-compte{display:none;align-items:center;gap:8px;font-size:.86rem;font-weight:700;margin-top:8px}
+.statut-compte.show{display:flex}
+.statut-compte.ok{color:#15803d}.statut-compte.ko{color:#b42318}.statut-compte.wait{color:var(--muted);font-weight:600}
+.statut-compte svg{width:18px;height:18px;flex:none}
+.case{display:flex;align-items:flex-start;gap:12px;margin:18px 0 0;padding:12px 14px;border:1.5px solid var(--line,#e1e8f2);border-radius:14px;cursor:pointer;min-height:48px;font-size:.92rem;font-weight:600;color:var(--ink)}
+.case input{width:20px;height:20px;margin:1px 0 0;flex:none;accent-color:var(--blue)}
+.case small{display:block;font-weight:500;color:var(--muted);font-size:.82rem;margin-top:2px}
+#blocPayeur[hidden]{display:none}
+.cadeau{font-size:.84rem;color:var(--muted);margin-top:14px}
+.cadeau b{color:var(--ink)}
 
 .reseaux{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .reseau{position:relative;display:flex;align-items:center;gap:12px;min-height:64px;padding:12px 14px;border:2px solid var(--line);border-radius:16px;cursor:pointer;font-weight:700;font-size:1rem;background:#fff;transition:border-color .2s,background-color .2s}
@@ -172,7 +185,7 @@ footer a:hover{color:var(--blue);text-decoration:underline}
     <div class="intro entree">
       <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="19" height="13" rx="3"/><path d="M2.5 10.5h19"/></svg>Paiement Mobile Money</span>
       <h1>Activer NoviMed Premium</h1>
-      <p class="sous">Payez par Flooz ou T-Money, sans carte bancaire. Utilisez le même numéro que celui de votre compte NoviMed dans l'application.</p>
+      <p class="sous">Payez par Flooz ou T-Money, sans carte bancaire. Indiquez votre numéro NoviMed, puis payez avec le numéro Mobile Money de votre choix.</p>
     </div>
 
     <div class="carte entree d1">
@@ -191,10 +204,14 @@ footer a:hover{color:var(--blue);text-decoration:underline}
           </label>
         </div>
 
+        <p class="etape-titre"><span class="num" aria-hidden="true">1</span>Le compte qui reçoit Premium</p>
         <label class="champ-titre" for="telephone">Votre numéro NoviMed</label>
-        <input type="tel" id="telephone" inputmode="tel" placeholder="90 00 00 00" required autocomplete="tel">
-        <p class="aide">C'est le numéro utilisé pour votre inscription dans l'application — c'est aussi ce numéro qui sera débité.</p>
+        <input type="tel" id="telephone" inputmode="tel" placeholder="90 00 00 00" required autocomplete="tel" aria-describedby="aideCompte statutCompte">
+        <p class="aide" id="aideCompte">Le numéro utilisé pour votre inscription dans l'application.</p>
+        <p class="statut-compte" id="statutCompte" role="status" aria-live="polite"></p>
 
+        <p class="etape-titre"><span class="num" aria-hidden="true">2</span>Le numéro qui paie</p>
+        <p class="etape-sous">Choisissez le réseau et le numéro Mobile Money où vous avez le solde.</p>
         <span class="champ-titre" id="lblReseau">Réseau Mobile Money</span>
         <div class="reseaux" role="radiogroup" aria-labelledby="lblReseau">
           <label class="reseau selected" id="floozLabel">
@@ -208,6 +225,19 @@ footer a:hover{color:var(--blue);text-decoration:underline}
             <span>T-Money</span>
           </label>
         </div>
+
+        <label class="case" for="memeNumero">
+          <input type="checkbox" id="memeNumero" checked>
+          <span>Je paie avec mon numéro NoviMed<small>Décochez pour payer avec un autre numéro (un autre réseau, un proche…).</small></span>
+        </label>
+
+        <div id="blocPayeur" hidden>
+          <label class="champ-titre" for="telephonePayeur">Numéro Mobile Money à débiter</label>
+          <input type="tel" id="telephonePayeur" inputmode="tel" placeholder="90 00 00 00" autocomplete="off">
+          <p class="aide">La demande de paiement de 1&nbsp;000&nbsp;F arrivera sur ce numéro.</p>
+        </div>
+
+        <p class="cadeau"><b>Bon à savoir :</b> vous pouvez aussi offrir Premium à un proche. Mettez son numéro NoviMed en 1, et votre numéro Mobile Money en 2.</p>
 
         <button type="submit" class="btn" id="btnPayer">Payer maintenant</button>
 
@@ -226,8 +256,8 @@ footer a:hover{color:var(--blue);text-decoration:underline}
       <div class="deroule">
         <h2>Comment ça se passe</h2>
         <ol>
-          <li><span class="n">1</span><span><b>Saisissez votre numéro</b> et choisissez Flooz ou T-Money.</span></li>
-          <li><span class="n">2</span><span><b>Validez sur votre téléphone</b> avec votre code PIN Mobile Money.</span></li>
+          <li><span class="n">1</span><span><b>Saisissez votre numéro NoviMed</b>, puis le réseau et le numéro qui paie.</span></li>
+          <li><span class="n">2</span><span><b>Validez sur le téléphone qui paie</b> avec le code PIN Mobile Money.</span></li>
           <li><span class="n">3</span><span><b>C'est prêt.</b> Ouvrez l'application : votre Premium est activé.</span></li>
         </ol>
       </div>
@@ -286,7 +316,7 @@ footer a:hover{color:var(--blue);text-decoration:underline}
       tentatives++;
       if (tentatives > 40) { // ~2 minutes
         arreterPoll();
-        afficherMsg('erreur', "Nous n'avons pas reçu de confirmation. Si le montant a été débité, contactez contacts@novimedtg.com avec votre numéro.");
+        afficherMsg('erreur', "Nous n'avons pas reçu de confirmation. Si le montant a été débité, contactez support@novimedtg.com avec votre numéro NoviMed et le numéro qui a payé.");
         btnPayer.disabled = false;
         btnPayer.textContent = 'Réessayer';
         return;
@@ -310,16 +340,75 @@ footer a:hover{color:var(--blue);text-decoration:underline}
     }, 3000);
   };
 
+  // 🆕 Deux numéros : le compte NoviMed (qui reçoit Premium) et le numéro qui paie
+  const memeNumero = document.getElementById('memeNumero');
+  const blocPayeur = document.getElementById('blocPayeur');
+  const telephonePayeur = document.getElementById('telephonePayeur');
+  const statutCompte = document.getElementById('statutCompte');
+  const ICO_OK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/></svg>';
+  const ICO_KO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.5v.01"/></svg>';
+  const chiffres = (v) => String(v || '').replace(/\D/g, '');
+  const formatNum = (v) => { const d = chiffres(v).slice(-8); return d.replace(/(\d{2})(?=\d)/g, '$1 '); };
+
+  memeNumero.addEventListener('change', () => {
+    blocPayeur.hidden = memeNumero.checked;
+    telephonePayeur.required = !memeNumero.checked;
+    if (!memeNumero.checked) telephonePayeur.focus();
+  });
+
+  // Vérifie le compte NoviMed dès que le numéro est complet
+  let compteOk = null; let compteVerifie = '';
+  const afficherCompte = (type, texte) => {
+    statutCompte.className = 'statut-compte show ' + type;
+    statutCompte.innerHTML = (type === 'ok' ? ICO_OK : type === 'ko' ? ICO_KO : '') + '<span>' + texte + '</span>';
+  };
+  const verifierCompte = async () => {
+    const d = chiffres(telephone.value);
+    if (d.length < 8) { compteOk = null; compteVerifie = ''; statutCompte.className = 'statut-compte'; return null; }
+    if (d === compteVerifie && compteOk !== null) return compteOk;
+    compteVerifie = d;
+    afficherCompte('wait', 'Vérification du compte…');
+    try {
+      const res = await fetch(`${API_BASE}/api/citizen-premium/check-account?phone=${encodeURIComponent(telephone.value.trim())}`);
+      const data = await res.json();
+      if (d !== chiffres(telephone.value)) return null; // le numéro a changé entre-temps
+      compteOk = !!data.found;
+      if (compteOk) { afficherCompte('ok', 'Compte NoviMed trouvé'); if (msgZone.classList.contains('erreur')) msgZone.className = 'msg'; }
+      else afficherCompte('ko', data.message || "Aucun compte NoviMed avec ce numéro.");
+      return compteOk;
+    } catch (e) {
+      compteOk = null; compteVerifie = '';
+      statutCompte.className = 'statut-compte';
+      return null; // vérification impossible : le serveur revérifiera au paiement
+    }
+  };
+  let verifTimer = null;
+  telephone.addEventListener('input', () => { clearTimeout(verifTimer); verifTimer = setTimeout(verifierCompte, 500); });
+  telephone.addEventListener('blur', verifierCompte);
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     arreterPoll();
 
     const plan = form.querySelector('input[name="plan"]:checked').value;
     const network = form.querySelector('input[name="network"]:checked').value;
-    const phone_number = telephone.value.trim();
+    const account_phone = telephone.value.trim();
+    const payer_phone = memeNumero.checked ? account_phone : telephonePayeur.value.trim();
 
-    if (!phone_number) {
-      afficherMsg('erreur', 'Merci de saisir votre numéro de téléphone.');
+    if (!account_phone) {
+      afficherMsg('erreur', 'Merci de saisir votre numéro NoviMed.');
+      telephone.focus();
+      return;
+    }
+    if (!payer_phone) {
+      afficherMsg('erreur', 'Merci de saisir le numéro Mobile Money à débiter.');
+      telephonePayeur.focus();
+      return;
+    }
+    const ok = await verifierCompte();
+    if (ok === false) {
+      afficherMsg('erreur', "Ce numéro ne correspond à aucun compte NoviMed. Vérifiez le numéro de votre inscription dans l'application.");
+      telephone.focus();
       return;
     }
 
@@ -331,7 +420,8 @@ footer a:hover{color:var(--blue);text-decoration:underline}
       const res = await fetch(`${API_BASE}/api/citizen-premium/pay`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ phone_number, network, plan })
+        // phone_number conservé pour compatibilité avec l'ancien serveur
+        body: JSON.stringify({ account_phone, payer_phone, phone_number: account_phone, network, plan })
       });
       const data = await res.json();
 
@@ -342,7 +432,7 @@ footer a:hover{color:var(--blue);text-decoration:underline}
         return;
       }
 
-      afficherMsg('attente', `Une demande a été envoyée sur le 1 000 F. Validez le paiement sur votre téléphone (code PIN ${network === 'FLOOZ' ? 'Flooz' : 'T-Money'}).`, true);
+      afficherMsg('attente', `Une demande de 1 000 F a été envoyée au ${formatNum(payer_phone)}. Validez le paiement sur ce téléphone (code PIN ${network === 'FLOOZ' ? 'Flooz' : 'T-Money'}).`, true);
       btnPayer.textContent = 'En attente de confirmation…';
       suivreStatut(data.identifier);
     } catch (err) {
